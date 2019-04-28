@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7BCDC710227512D000AB9F7F /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC70F227512D000AB9F7F /* RSA.swift */; };
+		7BCDC7122275222800AB9F7F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7112275222800AB9F7F /* User.swift */; };
+		7BCDC7152275255200AB9F7F /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7142275255200AB9F7F /* AppManager.swift */; };
+		7BCDC7172275261D00AB9F7F /* Persistencia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7162275261D00AB9F7F /* Persistencia.swift */; };
+		7BCDC71A22752BEC00AB9F7F /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC71922752BEC00AB9F7F /* LoginManager.swift */; };
+		7BCDC71C22752CE000AB9F7F /* BlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC71B22752CE000AB9F7F /* BlackBox.swift */; };
+		7BCDC71E22752D1B00AB9F7F /* Utilidades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC71D22752D1B00AB9F7F /* Utilidades.swift */; };
+		7BCDC7202275364B00AB9F7F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC71F2275364B00AB9F7F /* RoundButton.swift */; };
+		7BCDC7232275378D00AB9F7F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */; };
+		7BCDC7252275379500AB9F7F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7242275379500AB9F7F /* LoginViewController.swift */; };
+		7BF327972274EFCD00A44432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF327962274EFCD00A44432 /* AppDelegate.swift */; };
+		7BF327992274EFCD00A44432 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF327982274EFCD00A44432 /* LaunchViewController.swift */; };
+		7BF3279C2274EFCD00A44432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF3279A2274EFCD00A44432 /* Main.storyboard */; };
+		7BF3279E2274EFCF00A44432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7BF3279D2274EFCF00A44432 /* Assets.xcassets */; };
+		7BF327A12274EFCF00A44432 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF3279F2274EFCF00A44432 /* LaunchScreen.storyboard */; };
+		A8C8D14F7790C5A2ED8C3AFF /* Pods_SecureChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B5990CD695FD79B15AB85B /* Pods_SecureChat.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05B5990CD695FD79B15AB85B /* Pods_SecureChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecureChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A1736DEAF705040436E5FC9 /* Pods-SecureChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.debug.xcconfig"; path = "Target Support Files/Pods-SecureChat/Pods-SecureChat.debug.xcconfig"; sourceTree = "<group>"; };
+		7BCDC70F227512D000AB9F7F /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
+		7BCDC7112275222800AB9F7F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		7BCDC7142275255200AB9F7F /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		7BCDC7162275261D00AB9F7F /* Persistencia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistencia.swift; sourceTree = "<group>"; };
+		7BCDC71922752BEC00AB9F7F /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		7BCDC71B22752CE000AB9F7F /* BlackBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackBox.swift; sourceTree = "<group>"; };
+		7BCDC71D22752D1B00AB9F7F /* Utilidades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilidades.swift; sourceTree = "<group>"; };
+		7BCDC71F2275364B00AB9F7F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		7BCDC7242275379500AB9F7F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7BF327932274EFCD00A44432 /* SecureChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BF327962274EFCD00A44432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7BF327982274EFCD00A44432 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7BF3279B2274EFCD00A44432 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7BF3279D2274EFCF00A44432 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7BF327A02274EFCF00A44432 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7BF327A22274EFCF00A44432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB027900E12732D284D31939 /* Pods-SecureChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.release.xcconfig"; path = "Target Support Files/Pods-SecureChat/Pods-SecureChat.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7BF327902274EFCD00A44432 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8C8D14F7790C5A2ED8C3AFF /* Pods_SecureChat.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7BCDC7132275253D00AB9F7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BCDC7112275222800AB9F7F /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7BCDC718227526F700AB9F7F /* AppManager */ = {
+			isa = PBXGroup;
+			children = (
+				7BCDC7142275255200AB9F7F /* AppManager.swift */,
+				7BCDC7162275261D00AB9F7F /* Persistencia.swift */,
+				7BCDC71B22752CE000AB9F7F /* BlackBox.swift */,
+			);
+			path = AppManager;
+			sourceTree = "<group>";
+		};
+		7BCDC7212275365E00AB9F7F /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				7BCDC71F2275364B00AB9F7F /* RoundButton.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		7BF3278A2274EFCD00A44432 = {
+			isa = PBXGroup;
+			children = (
+				7BF327952274EFCD00A44432 /* SecureChat */,
+				7BF327942274EFCD00A44432 /* Products */,
+				C81F996DBBABE027C4BB11C3 /* Pods */,
+				85CB1143DE633611F4226DBE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7BF327942274EFCD00A44432 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BF327932274EFCD00A44432 /* SecureChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7BF327952274EFCD00A44432 /* SecureChat */ = {
+			isa = PBXGroup;
+			children = (
+				7BF327962274EFCD00A44432 /* AppDelegate.swift */,
+				7BF327982274EFCD00A44432 /* LaunchViewController.swift */,
+				7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */,
+				7BCDC7242275379500AB9F7F /* LoginViewController.swift */,
+				7BCDC71922752BEC00AB9F7F /* LoginManager.swift */,
+				7BCDC7212275365E00AB9F7F /* UIElements */,
+				7BCDC71D22752D1B00AB9F7F /* Utilidades.swift */,
+				7BCDC70F227512D000AB9F7F /* RSA.swift */,
+				7BCDC718227526F700AB9F7F /* AppManager */,
+				7BCDC7132275253D00AB9F7F /* Model */,
+				7BF3279A2274EFCD00A44432 /* Main.storyboard */,
+				7BF3279D2274EFCF00A44432 /* Assets.xcassets */,
+				7BF3279F2274EFCF00A44432 /* LaunchScreen.storyboard */,
+				7BF327A22274EFCF00A44432 /* Info.plist */,
+			);
+			path = SecureChat;
+			sourceTree = "<group>";
+		};
+		85CB1143DE633611F4226DBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				05B5990CD695FD79B15AB85B /* Pods_SecureChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C81F996DBBABE027C4BB11C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5A1736DEAF705040436E5FC9 /* Pods-SecureChat.debug.xcconfig */,
+				FB027900E12732D284D31939 /* Pods-SecureChat.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7BF327922274EFCD00A44432 /* SecureChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7BF327A52274EFCF00A44432 /* Build configuration list for PBXNativeTarget "SecureChat" */;
+			buildPhases = (
+				75EB987C5DD476FCB5CE3D7C /* [CP] Check Pods Manifest.lock */,
+				7BF3278F2274EFCD00A44432 /* Sources */,
+				7BF327902274EFCD00A44432 /* Frameworks */,
+				7BF327912274EFCD00A44432 /* Resources */,
+				C8ECCB37292DECBA6CFC56C0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SecureChat;
+			productName = SecureChat;
+			productReference = 7BF327932274EFCD00A44432 /* SecureChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7BF3278B2274EFCD00A44432 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = DeepTech;
+				TargetAttributes = {
+					7BF327922274EFCD00A44432 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 7BF3278E2274EFCD00A44432 /* Build configuration list for PBXProject "SecureChat" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7BF3278A2274EFCD00A44432;
+			productRefGroup = 7BF327942274EFCD00A44432 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7BF327922274EFCD00A44432 /* SecureChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7BF327912274EFCD00A44432 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BF327A12274EFCF00A44432 /* LaunchScreen.storyboard in Resources */,
+				7BF3279E2274EFCF00A44432 /* Assets.xcassets in Resources */,
+				7BF3279C2274EFCD00A44432 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		75EB987C5DD476FCB5CE3D7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SecureChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8ECCB37292DECBA6CFC56C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SecureChat/Pods-SecureChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SecureChat/Pods-SecureChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7BF3278F2274EFCD00A44432 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BCDC7252275379500AB9F7F /* LoginViewController.swift in Sources */,
+				7BCDC7232275378D00AB9F7F /* SignUpViewController.swift in Sources */,
+				7BCDC7122275222800AB9F7F /* User.swift in Sources */,
+				7BCDC7152275255200AB9F7F /* AppManager.swift in Sources */,
+				7BCDC71A22752BEC00AB9F7F /* LoginManager.swift in Sources */,
+				7BF327992274EFCD00A44432 /* LaunchViewController.swift in Sources */,
+				7BF327972274EFCD00A44432 /* AppDelegate.swift in Sources */,
+				7BCDC71E22752D1B00AB9F7F /* Utilidades.swift in Sources */,
+				7BCDC7202275364B00AB9F7F /* RoundButton.swift in Sources */,
+				7BCDC710227512D000AB9F7F /* RSA.swift in Sources */,
+				7BCDC7172275261D00AB9F7F /* Persistencia.swift in Sources */,
+				7BCDC71C22752CE000AB9F7F /* BlackBox.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7BF3279A2274EFCD00A44432 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BF3279B2274EFCD00A44432 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7BF3279F2274EFCF00A44432 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7BF327A02274EFCF00A44432 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7BF327A32274EFCF00A44432 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7BF327A42274EFCF00A44432 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7BF327A62274EFCF00A44432 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A1736DEAF705040436E5FC9 /* Pods-SecureChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7R5SGC6JP6;
+				INFOPLIST_FILE = SecureChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.deepTech.SecureChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7BF327A72274EFCF00A44432 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB027900E12732D284D31939 /* Pods-SecureChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7R5SGC6JP6;
+				INFOPLIST_FILE = SecureChat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.deepTech.SecureChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7BF3278E2274EFCD00A44432 /* Build configuration list for PBXProject "SecureChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BF327A32274EFCF00A44432 /* Debug */,
+				7BF327A42274EFCF00A44432 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7BF327A52274EFCF00A44432 /* Build configuration list for PBXNativeTarget "SecureChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7BF327A62274EFCF00A44432 /* Debug */,
+				7BF327A72274EFCF00A44432 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7BF3278B2274EFCD00A44432 /* Project object */;
+}
