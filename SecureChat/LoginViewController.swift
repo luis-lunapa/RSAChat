@@ -21,14 +21,25 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         cancelButton.isEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func signinPressed(_ sender: Any) {
         if emailTextField.text! == "" {
-            
+            self.showAlert(title: "Error", text: "You must specify your email")
+            return
         }
+        if passwordTextField.text! == "" {
+            self.showAlert(title: "Error", text: "You must specify your password")
+            return
+        }
+        
+        self.tempLogin(user: emailTextField.text!, pass: passwordTextField.text!)
+        
+        
     }
     
     
@@ -43,6 +54,40 @@ class LoginViewController: UIViewController {
         
     }
     
+    func tempLogin(user: String, pass: String) {
+        
+        if user == "luis" && pass == "12345" {
+            var u = User.init(idUser: "1", token: "123", email: "luis.lunapa@outlook.com", name: "Luis Gerardo Luna Peña", profilePic: nil)
+            AppManager.shared.persistencia.currentUser = u
+            goToApp()
+        } else if user == "tony" && pass == "12345" {
+            var u = User.init(idUser: "2", token: "123", email: "laverga@gmail.com", name: "Luis Antonio Vazquez Garcia", profilePic: nil)
+            AppManager.shared.persistencia.currentUser = u
+            goToApp()
+            
+        } else if user == "victor" && pass == "12345" {
+            var u = User.init(idUser: "3", token: "123", email: "pulidocs@gmail.com", name: "Victor E. Pulido Contreras", profilePic: nil)
+            AppManager.shared.persistencia.currentUser = u
+            goToApp()
+        
+        } else {
+            
+            
+            self.showAlert(title: "Error", text: "Wrong user or password")
+        }
+        
+        
+        
+        
+        
+    }
+    
+    func goToApp() {
+        let view = self.storyboard?.instantiateViewController(withIdentifier: "MainViewController")
+        
+        self.present(view!, animated: true)
+    }
+    
     
     // MARK: - Navigation
 
@@ -55,6 +100,10 @@ class LoginViewController: UIViewController {
     @IBAction func cancelPressed(_ sender: Any) {
         print("CANCEL")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
     }
  
 

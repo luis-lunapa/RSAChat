@@ -23,7 +23,8 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.signupButton.layer.cornerRadius = 6
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
@@ -48,6 +49,10 @@ class SignUpViewController: UIViewController {
     @IBAction func cancelPressed(_ sender: Any) {
         print("CANCEL")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
 
