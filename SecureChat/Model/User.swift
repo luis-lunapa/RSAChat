@@ -18,12 +18,13 @@ import RealmSwift
     dynamic var name: String = ""
     @objc private dynamic var profilePicData: Data?
     
-    convenience init (idUser: String, token: String, email: String, name: String) {
+    convenience init (idUser: String, token: String, email: String, name: String, profilePic: Data?) {
         self.init()
-        self.idUser = idUser
-        self.token  = token
-        self.email  = email
-        self.name   = name
+        self.idUser         = idUser
+        self.token          = token
+        self.email          = email
+        self.name           = name
+        self.profilePicData = profilePic
         
     }
     
@@ -38,6 +39,10 @@ import RealmSwift
         return nil
     }
     
+    func getProfileImageData() -> Data? {
+        return self.profilePicData
+    }
+    
     func getProfileImageString() -> String? {
         if let p = self.profilePicData {
             if let imageString = p.base64EncodedString(options: []) as String? {
@@ -47,6 +52,19 @@ import RealmSwift
             }
         }
         return nil
+    }
+    
+    func save() {
+        if let realm = AppManager.shared.persistencia.realmBD() {
+            if realm.objects(User.self).count != 0 {
+                try! realm.write {
+                    realm.deleteAll()
+                }
+            }
+            try! realm.write {
+                realm.add(self)
+            }
+        }
     }
     
     

@@ -15,10 +15,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Launch View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SecureChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LaunchViewController" customModule="SecureChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,12 +54,12 @@
         <!--Welcome-->
         <scene sceneID="uLe-Sr-xUe">
             <objects>
-                <viewController storyboardIdentifier="WelcomeViewController" title="Welcome" id="8m4-yy-2Db" customClass="WelcomeViewController" customModule="words" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" title="Welcome" id="8m4-yy-2Db" customClass="WelcomeViewController" customModule="SecureChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mtp-vu-EGl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haK-Cw-zMm" customClass="RoundButton" customModule="words" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haK-Cw-zMm" customClass="RoundButton" customModule="SecureChat" customModuleProvider="target">
                                 <rect key="frame" x="57" y="749" width="300" height="46"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.82745098039999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -80,11 +80,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="QTx-Pz-fj1" kind="presentation" id="ThD-Np-lme"/>
+                                    <segue destination="QTx-Pz-fj1" kind="popoverPresentation" popoverAnchorView="haK-Cw-zMm" id="ThD-Np-lme">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UChat helps you connect easily with friends from around the world in a secure way using RSA" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZh-Ta-sBe">
-                                <rect key="frame" x="63" y="683" width="288" height="36"/>
+                                <rect key="frame" x="69.5" y="684" width="275.5" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="288" id="DZz-xB-xge"/>
                                 </constraints>
@@ -93,7 +95,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjs-eS-say">
-                                <rect key="frame" x="63" y="637" width="288" height="36"/>
+                                <rect key="frame" x="63" y="639" width="288" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="2Av-xC-SLg"/>
                                 </constraints>
@@ -102,32 +104,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YTt-9q-D7Z">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="617"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Luis Gerardo Luna Peña" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enl-Ji-hqy">
-                                        <rect key="frame" x="44" y="299" width="331" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luis Gerardo Luna Peña" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enl-Ji-hqy">
+                                        <rect key="frame" x="50.5" y="299" width="313.5" height="34"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="29"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Victor E. Pulido Contreras" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebc-sU-SQc">
-                                        <rect key="frame" x="28" y="348" width="363" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Victor E. Pulido Contreras" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebc-sU-SQc">
+                                        <rect key="frame" x="40" y="348" width="334" height="34"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="29"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Luis Antonio Vázquez" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEX-NE-a8X">
-                                        <rect key="frame" x="59" y="397" width="300" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Luis Antonio Vázquez" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEX-NE-a8X">
+                                        <rect key="frame" x="62.5" y="397" width="289" height="35"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrJ-MV-rYH">
-                                        <rect key="frame" x="127" y="207" width="165" height="67"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UChat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrJ-MV-rYH">
+                                        <rect key="frame" x="124.5" y="207" width="165" height="67"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="56"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -135,9 +133,19 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1450980392" green="0.82745098039999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="0.99579277970000002" blue="0.99542664560000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="hEX-NE-a8X" firstAttribute="top" secondItem="Ebc-sU-SQc" secondAttribute="bottom" constant="15" id="Bga-2s-CXd"/>
+                                    <constraint firstItem="hEX-NE-a8X" firstAttribute="centerX" secondItem="YTt-9q-D7Z" secondAttribute="centerX" id="JyU-Xa-jAJ"/>
+                                    <constraint firstItem="enl-Ji-hqy" firstAttribute="centerX" secondItem="YTt-9q-D7Z" secondAttribute="centerX" id="Rri-DF-cyA"/>
+                                    <constraint firstItem="CrJ-MV-rYH" firstAttribute="centerX" secondItem="YTt-9q-D7Z" secondAttribute="centerX" id="VJJ-e7-XvW"/>
+                                    <constraint firstItem="Ebc-sU-SQc" firstAttribute="top" secondItem="enl-Ji-hqy" secondAttribute="bottom" constant="15" id="b3A-YM-OGa"/>
+                                    <constraint firstItem="Ebc-sU-SQc" firstAttribute="centerX" secondItem="YTt-9q-D7Z" secondAttribute="centerX" id="fV2-an-7nF"/>
+                                    <constraint firstItem="CrJ-MV-rYH" firstAttribute="top" secondItem="YTt-9q-D7Z" secondAttribute="top" constant="207" id="oA0-XI-Ie3"/>
+                                    <constraint firstItem="enl-Ji-hqy" firstAttribute="top" secondItem="CrJ-MV-rYH" secondAttribute="bottom" constant="25" id="q7R-bN-CtO"/>
+                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sOb-ee-hhX">
-                                <rect key="frame" x="98" y="815" width="218" height="27"/>
+                                <rect key="frame" x="90.5" y="815" width="233" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="203" id="0fJ-u5-LcQ"/>
                                     <constraint firstAttribute="height" constant="27" id="GCZ-pM-AWC"/>
@@ -147,7 +155,9 @@
                                     <color key="titleColor" red="0.61769517920000006" green="0.65734697799999997" blue="0.6837127221" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zbp-dV-oqj" kind="presentation" id="5N3-Hm-EIx"/>
+                                    <segue destination="zbp-dV-oqj" kind="popoverPresentation" popoverAnchorView="sOb-ee-hhX" id="5N3-Hm-EIx">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                         </subviews>
@@ -207,7 +217,7 @@
         <!--Navigation Controller-->
         <scene sceneID="uvG-ma-SiW">
             <objects>
-                <navigationController id="igV-AE-HfV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainViewController" id="igV-AE-HfV" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NhK-Mv-rPl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -223,40 +233,46 @@
         <!--Login-->
         <scene sceneID="B6K-bv-N71">
             <objects>
-                <viewController title="Login" id="QTx-Pz-fj1" customClass="LoginViewController" customModule="words" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="QTx-Pz-fj1" customClass="LoginViewController" customModule="SecureChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qYp-66-ypA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtz-Og-97e">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtz-Og-97e">
                                 <rect key="frame" x="0.0" y="147.5" width="414" height="446.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlN-MA-j3g">
-                                        <rect key="frame" x="67" y="25" width="280" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlN-MA-j3g">
+                                        <rect key="frame" x="160.5" y="25" width="93" height="35"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
                                         <color key="textColor" red="0.2784313725" green="0.32156862749999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNv-VA-6d7" customClass="AuthTextField" customModule="words" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNv-VA-6d7">
                                         <rect key="frame" x="57" y="189" width="300" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="8f0-Id-ug0"/>
+                                            <constraint firstAttribute="height" constant="46" id="KwQ-ZD-q4e"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="username"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltj-k7-l2g" customClass="AuthTextField" customModule="words" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ltj-k7-l2g">
                                         <rect key="frame" x="57" y="243" width="300" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="01Q-sF-ng1"/>
+                                            <constraint firstAttribute="height" constant="46" id="0Pv-RX-gIv"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmE-hT-Vd5" customClass="RoundButton" customModule="words" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmE-hT-Vd5">
                                         <rect key="frame" x="57" y="299" width="300" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.1450980392" green="0.82745098039999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="LqK-DT-ehx"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Sign In">
@@ -268,13 +284,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="loginButtonPressed:" destination="QTx-Pz-fj1" eventType="touchUpInside" id="8Ve-ep-PG6"/>
+                                            <action selector="signinPressed:" destination="QTx-Pz-fj1" eventType="touchUpInside" id="kJe-xw-JmN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-v4-Nbc" customClass="RoundButton" customModule="words" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keh-v4-Nbc">
                                         <rect key="frame" x="57" y="353" width="300" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="8nO-Nx-7IW"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Cancel">
@@ -286,19 +304,43 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="QTx-Pz-fj1" eventType="touchUpInside" id="PoQ-UO-TBO"/>
+                                            <action selector="cancelPressed:" destination="QTx-Pz-fj1" eventType="touchUpInside" id="N3u-6L-3Fc"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cNv-VA-6d7" firstAttribute="leading" secondItem="dtz-Og-97e" secondAttribute="leading" constant="57" id="Abm-do-13B"/>
+                                    <constraint firstAttribute="trailing" secondItem="keh-v4-Nbc" secondAttribute="trailing" constant="57" id="MJ9-Zl-EyG"/>
+                                    <constraint firstItem="qlN-MA-j3g" firstAttribute="centerX" secondItem="dtz-Og-97e" secondAttribute="centerX" id="OzE-lz-BeP"/>
+                                    <constraint firstItem="xmE-hT-Vd5" firstAttribute="top" secondItem="ltj-k7-l2g" secondAttribute="bottom" constant="10" id="Piu-zQ-w2v"/>
+                                    <constraint firstAttribute="trailing" secondItem="ltj-k7-l2g" secondAttribute="trailing" constant="57" id="X6V-CW-7Kd"/>
+                                    <constraint firstItem="ltj-k7-l2g" firstAttribute="leading" secondItem="dtz-Og-97e" secondAttribute="leading" constant="57" id="XS4-zx-bOe"/>
+                                    <constraint firstItem="qlN-MA-j3g" firstAttribute="top" secondItem="dtz-Og-97e" secondAttribute="top" constant="25" id="Z0z-rN-IXe"/>
+                                    <constraint firstAttribute="trailing" secondItem="cNv-VA-6d7" secondAttribute="trailing" constant="57" id="eXr-jl-Iq3"/>
+                                    <constraint firstItem="cNv-VA-6d7" firstAttribute="top" secondItem="qlN-MA-j3g" secondAttribute="bottom" constant="129" id="iDm-qe-c46"/>
+                                    <constraint firstAttribute="trailing" secondItem="xmE-hT-Vd5" secondAttribute="trailing" constant="57" id="jiK-ny-oW8"/>
+                                    <constraint firstItem="xmE-hT-Vd5" firstAttribute="leading" secondItem="dtz-Og-97e" secondAttribute="leading" constant="57" id="m1x-xa-LoR"/>
+                                    <constraint firstItem="ltj-k7-l2g" firstAttribute="top" secondItem="cNv-VA-6d7" secondAttribute="bottom" constant="8" id="o42-fI-QsW"/>
+                                    <constraint firstItem="keh-v4-Nbc" firstAttribute="leading" secondItem="dtz-Og-97e" secondAttribute="leading" constant="57" id="ohW-F1-sch"/>
+                                    <constraint firstItem="keh-v4-Nbc" firstAttribute="top" secondItem="xmE-hT-Vd5" secondAttribute="bottom" constant="8" id="qgY-fW-22X"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cZ7-UD-CTT" firstAttribute="bottom" secondItem="dtz-Og-97e" secondAttribute="bottom" constant="268" id="32r-rM-eCz"/>
+                            <constraint firstItem="dtz-Og-97e" firstAttribute="leading" secondItem="cZ7-UD-CTT" secondAttribute="leading" id="Asy-L7-4lc"/>
+                            <constraint firstItem="dtz-Og-97e" firstAttribute="trailing" secondItem="cZ7-UD-CTT" secondAttribute="trailing" id="heH-q5-0GN"/>
+                            <constraint firstItem="dtz-Og-97e" firstAttribute="top" secondItem="cZ7-UD-CTT" secondAttribute="top" constant="103.5" id="k3l-hz-AIp"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cZ7-UD-CTT"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="cNv-VA-6d7" id="ubU-hC-ROy"/>
-                        <outlet property="passwordTextField" destination="ltj-k7-l2g" id="kU8-3n-XZp"/>
+                        <outlet property="cancelButton" destination="keh-v4-Nbc" id="VTQ-Yw-fiH"/>
+                        <outlet property="emailTextField" destination="cNv-VA-6d7" id="bS4-T7-T2E"/>
+                        <outlet property="passwordTextField" destination="ltj-k7-l2g" id="1hn-Kf-pFq"/>
+                        <outlet property="signInButton" destination="xmE-hT-Vd5" id="Iqs-Fl-oL0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUc-T3-YAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,7 +350,7 @@
         <!--Signup-->
         <scene sceneID="1LQ-HY-B4G">
             <objects>
-                <viewController title="Signup" id="zbp-dV-oqj" customClass="SignupViewController" customModule="words" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Signup" id="zbp-dV-oqj" customClass="SignUpViewController" customModule="SecureChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dsB-ND-BSz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -317,13 +359,13 @@
                                 <rect key="frame" x="19" y="158" width="375" height="521"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fk-wb-nhU">
-                                        <rect key="frame" x="137.5" y="25" width="100" height="36"/>
+                                        <rect key="frame" x="133.5" y="25" width="108" height="35"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
                                         <color key="textColor" red="0.2784313725" green="0.32156862749999998" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LY6-Vm-i03" customClass="RoundButton" customModule="words" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="362" width="300" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LY6-Vm-i03">
+                                        <rect key="frame" x="38" y="361" width="300" height="46"/>
                                         <color key="backgroundColor" red="0.1450980392" green="0.82745098039999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="isJ-pm-G7B"/>
@@ -339,11 +381,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signupButtonPressed:" destination="zbp-dV-oqj" eventType="touchUpInside" id="Rd0-Gr-bcR"/>
+                                            <action selector="signupPressed:" destination="zbp-dV-oqj" eventType="touchUpInside" id="GxP-hF-Dov"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-CE-XGG" customClass="AuthTextField" customModule="words" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="243" width="300" height="46"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Lw-CE-XGG">
+                                        <rect key="frame" x="38" y="242" width="300" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="0XK-pB-VVx"/>
                                             <constraint firstAttribute="height" constant="46" id="sBG-PI-lg7"/>
@@ -352,8 +394,8 @@
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVD-58-byR" customClass="RoundButton" customModule="words" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="416" width="300" height="46"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVD-58-byR">
+                                        <rect key="frame" x="38" y="415" width="300" height="46"/>
                                         <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="fkl-sp-BO3"/>
@@ -369,11 +411,11 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="zbp-dV-oqj" eventType="touchUpInside" id="h3K-Md-OYj"/>
+                                            <action selector="cancelPressed:" destination="zbp-dV-oqj" eventType="touchUpInside" id="Jfo-YI-iLh"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-aw-aEs" customClass="AuthTextField" customModule="words" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="189" width="300" height="46"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1sf-aw-aEs">
+                                        <rect key="frame" x="38" y="188" width="300" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="jsl-6e-uhc"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="zxM-7G-0JT"/>
@@ -382,8 +424,8 @@
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="khN-AU-wfq" customClass="AuthTextField" customModule="words" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="135" width="300" height="46"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="khN-AU-wfq">
+                                        <rect key="frame" x="38" y="134" width="300" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="7gt-zB-ywl"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="aye-uE-WtQ"/>
@@ -392,8 +434,8 @@
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AtU-If-aq5" customClass="AuthTextField" customModule="words" customModuleProvider="target">
-                                        <rect key="frame" x="38" y="297" width="300" height="46"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AtU-If-aq5">
+                                        <rect key="frame" x="38" y="296" width="300" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="LDW-vN-dvE"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="kVi-GF-yrG"/>
@@ -438,9 +480,12 @@
                         <viewLayoutGuide key="safeArea" id="uMo-fU-b4E"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="1sf-aw-aEs" id="uPh-zH-0n5"/>
-                        <outlet property="fullNameTextField" destination="khN-AU-wfq" id="sOg-0f-Oke"/>
-                        <outlet property="passwordTextField" destination="1Lw-CE-XGG" id="9zR-iH-F2S"/>
+                        <outlet property="cancelButton" destination="aVD-58-byR" id="kXY-L0-8RU"/>
+                        <outlet property="emailTextField" destination="1sf-aw-aEs" id="Rlg-6b-5ur"/>
+                        <outlet property="nameTextField" destination="khN-AU-wfq" id="OlB-Wc-yQ4"/>
+                        <outlet property="passwordConfirmTextField" destination="AtU-If-aq5" id="zgS-od-Wa7"/>
+                        <outlet property="passwordTextField" destination="1Lw-CE-XGG" id="cRf-6G-LTk"/>
+                        <outlet property="signupButton" destination="LY6-Vm-i03" id="Fre-Nl-YLD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wxy-Bf-w05" userLabel="First Responder" sceneMemberID="firstResponder"/>
