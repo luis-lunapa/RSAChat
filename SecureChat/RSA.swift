@@ -185,6 +185,13 @@ final class RSA {
     
     static private func determineD(e: Int, p: Int, q: Int) -> Int {
         let n = (p - 1) * (q - 1)
-        return n
+
+        e = e % n;
+        for i in 1...m {
+            if ((a * x) % m == 1){
+                return x
+            }
+        }
+        return 1;
     }
 }
