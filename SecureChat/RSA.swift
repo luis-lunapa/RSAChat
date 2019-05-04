@@ -60,14 +60,14 @@ final class RSA {
     }
     
     
-    static func generarLlaves() -> (Int, Int) {
+    static func generarLlaves() -> (String, String) {
         
         let path = Bundle.main.path(forResource: "prime_number", ofType: "json")
         let file = try? String.init(contentsOfFile: path!)
         
         let jsonData = try! JSON.init(parseJSON: file!)
         
-        print("Json === \(jsonData)")
+        
         
         let randomP = String(Int.random(in: 100000...149999))
         let randomQ = String(Int.random(in: 100000...149999))
@@ -77,11 +77,13 @@ final class RSA {
         let q = jsonData[randomQ].intValue
         
         
+        let e = selectE(p: p, q: q) // Calcula E
         
         
         
         
-        return (p,q)
+        
+        return ("","")
         
         
         
