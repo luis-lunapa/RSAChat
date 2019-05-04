@@ -49,7 +49,7 @@ class SignUpViewController: UIViewController {
         let email    = self.emailTextField.text!
         let password = self.passwordTextField.text!
         
-        let (private_key, public_key) = RSA.generateKeys(tag: email)
+        let (private_key, public_key) = RSA.generarLlaves()
         
         print("Llaves = privada = \(private_key) publica = \(public_key)")
         
