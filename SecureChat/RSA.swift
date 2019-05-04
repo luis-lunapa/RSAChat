@@ -94,6 +94,12 @@ final class RSA {
         let llavePrivada = "\(d)%mod%\(n)"
         
         
+        let separadaPublica = llavePublica.components(separatedBy: "%mod%")
+        let separadaPrivada = llavePrivada.components(separatedBy: "%mod%")
+        
+        print("Separada publica = \(separadaPublica) separada privada = \(separadaPrivada)")
+        
+        
         
         
         return (llavePublica,llavePrivada)
@@ -155,7 +161,7 @@ final class RSA {
         let n = (p - 1) * (q - 1)
         var r = p < q ? Int.random(in: p...q) : Int.random(in: q...p)
         while true {
-            if gcd(r: r, n: n) == 1 {
+            if gcd(r, n) == 1 {
                 break
             }else{
                 r = r + 1
@@ -179,6 +185,6 @@ final class RSA {
     
     static private func determineD(e: Int, p: Int, q: Int) -> Int {
         let n = (p - 1) * (q - 1)
-        
+        return n
     }
 }
