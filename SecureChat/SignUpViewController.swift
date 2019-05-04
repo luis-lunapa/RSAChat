@@ -25,6 +25,11 @@ class SignUpViewController: UIViewController {
         self.signupButton.layer.cornerRadius = 6
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        let (private_key, public_key) = RSA.generarLlaves()
+        
+        print("Llaves = privada = \(private_key) publica = \(public_key)")
+        
 
         // Do any additional setup after loading the view.
     }
@@ -49,10 +54,7 @@ class SignUpViewController: UIViewController {
         let email    = self.emailTextField.text!
         let password = self.passwordTextField.text!
         
-        let (private_key, public_key) = RSA.generarLlaves()
-        
-        print("Llaves = privada = \(private_key) publica = \(public_key)")
-        
+       
         
         
     }

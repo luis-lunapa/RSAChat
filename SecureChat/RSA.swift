@@ -76,14 +76,27 @@ final class RSA {
         let p = jsonData[randomP].intValue
         let q = jsonData[randomQ].intValue
         
+        let n = p * q
+        
+        print("p = \(p) q = \(q)")
+        
         
         let e = selectE(p: p, q: q) // Calcula E
         
+        let d = 44
+        
+        
+        // Lave publica e,n
+        // Llave privada d,n
+        
+        let llavePublica = "\(e)%mod%\(n)"
+        
+        let llavePrivada = "\(d)%mod%\(n)"
         
         
         
         
-        return ("","")
+        return (llavePublica,llavePrivada)
         
         
         
