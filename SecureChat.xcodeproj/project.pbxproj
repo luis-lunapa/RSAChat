@@ -20,6 +20,7 @@
 		7BCDC7202275364B00AB9F7F /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC71F2275364B00AB9F7F /* RoundButton.swift */; };
 		7BCDC7232275378D00AB9F7F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */; };
 		7BCDC7252275379500AB9F7F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7242275379500AB9F7F /* LoginViewController.swift */; };
+		7BE57074227E4B270037164C /* prime_number.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BE57073227E4B270037164C /* prime_number.json */; };
 		7BF327972274EFCD00A44432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF327962274EFCD00A44432 /* AppDelegate.swift */; };
 		7BF327992274EFCD00A44432 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF327982274EFCD00A44432 /* LaunchViewController.swift */; };
 		7BF3279C2274EFCD00A44432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF3279A2274EFCD00A44432 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		7BCDC71F2275364B00AB9F7F /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7BCDC7242275379500AB9F7F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7BE57073227E4B270037164C /* prime_number.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prime_number.json; sourceTree = "<group>"; };
 		7BF327932274EFCD00A44432 /* SecureChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF327962274EFCD00A44432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF327982274EFCD00A44432 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				7BCDC71922752BEC00AB9F7F /* LoginManager.swift */,
 				7BCDC7212275365E00AB9F7F /* UIElements */,
 				7BCDC71D22752D1B00AB9F7F /* Utilidades.swift */,
+				7BE57073227E4B270037164C /* prime_number.json */,
 				7BCDC70F227512D000AB9F7F /* RSA.swift */,
 				7BCDC718227526F700AB9F7F /* AppManager */,
 				7BCDC7132275253D00AB9F7F /* Model */,
@@ -213,6 +216,7 @@
 			files = (
 				7BF327A12274EFCF00A44432 /* LaunchScreen.storyboard in Resources */,
 				7BF3279E2274EFCF00A44432 /* Assets.xcassets in Resources */,
+				7BE57074227E4B270037164C /* prime_number.json in Resources */,
 				7BF3279C2274EFCD00A44432 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

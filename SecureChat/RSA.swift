@@ -8,6 +8,7 @@
 
 import Foundation
 import Security
+import UIKit
 
 final class RSA {
     
@@ -53,6 +54,36 @@ final class RSA {
         let publicKey = SecKeyCopyPublicKey(privateKey)
         
         return(privateKey, publicKey)
+        
+        
+        
+    }
+    
+    
+    static func generarLlaves() -> (Int, Int) {
+        
+        let path = Bundle.main.path(forResource: "prime_number", ofType: "json")
+        let file = try? String.init(contentsOfFile: path!)
+        
+        let jsonData = try! JSON.init(parseJSON: file!)
+        
+        print("Json === \(jsonData)")
+        
+        let randomP = String(Int.random(in: 100000...149999))
+        let randomQ = String(Int.random(in: 100000...149999))
+        
+        
+        let p = jsonData[randomP].intValue
+        let q = jsonData[randomQ].intValue
+        
+        
+        
+        
+        
+        
+        return (p,q)
+        
+        
         
         
         
