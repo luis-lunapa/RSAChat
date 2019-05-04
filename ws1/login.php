@@ -90,11 +90,13 @@ $result = $db->queryInsert(
     array("
     INSERT INTO Login(
         idUsuario,
+        email,
         token,
         status
     )
     VALUES(
         $idUser,
+        '$email'
         '$newToken',
         'active'
     )
