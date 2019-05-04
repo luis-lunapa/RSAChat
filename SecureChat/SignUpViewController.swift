@@ -23,14 +23,81 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.signupButton.layer.cornerRadius = 6
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+//        self.nameTextField.setBottomLine(borderColor: .gray)
+//        self.emailTextField.setBottomLine(borderColor: .gray)
+//        self.passwordTextField.setBottomLine(borderColor: .gray)
+//        self.passwordConfirmTextField.setBottomLine(borderColor: .gray)
     }
     
     
     @IBAction func signupPressed(_ sender: Any) {
         // Registration code and go to chats
+        
+        if !checkForm() {
+            return
+        }
+        
+        let name     = self.nameTextField.text!
+        let email    = self.emailTextField.text!
+        let password = self.passwordTextField.text!
+        
+        let (private_key, public_key) = RSA.generateKeys(tag: email)
+        
+        print("Llaves = privada = \(private_key) publica = \(public_key)")
+        
+        
+        
+    }
+    
+    func checkForm () -> Bool {
+        var ready = true
+        var msg = ""
+        if nameTextField.text! == "" {
+            ready = false
+            msg = "Your name is required \n"
+            
+        }
+        
+        if emailTextField.text! == "" {
+            ready = false
+            msg = msg + "Your email is required \n"
+            
+        }
+        
+        if passwordTextField.text! == "" {
+            ready = false
+            msg = msg + "A new password is required \n"
+            
+        }
+        
+        if passwordConfirmTextField.text! == "" {
+            ready = false
+            msg = msg + "You must confirm your password email is required \n"
+            
+        }
+        
+        if passwordConfirmTextField.text! != passwordTextField.text! {
+            ready = false
+            msg = msg + "Both passwords must be the same \n"
+            
+        }
+        
+        if !ready {
+            showAlert(title: "Error Singning up", text: msg)
+            
+        }
+        
+        
+       return ready
+        
     }
     
     
@@ -44,10 +111,25 @@ class SignUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     
+    func showAlert(title: String, text: String) {
+        
+        let alert = UIAlertController.init(title: title, message: text, preferredStyle: .alert)
+        
+        let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+        
+    }
+    
     
     @IBAction func cancelPressed(_ sender: Any) {
         print("CANCEL")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
 

@@ -15,5 +15,6 @@ final class AppManager {
     
     
     let persistencia: Persistencia = Persistencia()
+    let networking: Networking = Networking()
 
 }

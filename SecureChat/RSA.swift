@@ -7,9 +7,100 @@
 //
 
 import Foundation
+import Security
 
 final class RSA {
     
+    /**
+     Generates a key pair for the RSA, both keys are stored in the system keychain and the public key should be posted
+     
+     - Author:
+     Luis Gerardo Luna
+     
+     - Parameters:
+        - tag: The email of the user will be used for generating the keys
+     
+     - Returns:
+     (SecKey?, SecKey?)
+     
+     - Version:
+     1.0
+     
+     - Copyright: Copyright © 2019 DeepTech.
+     */
+    
+    static func generateKeys(tag: String) -> (SecKey?, SecKey?) {
+        
+        let keyTag = "com.deepTech.SecureChat".data(using: .utf8)!
+        let attributes: [String: Any] =
+            [
+            kSecAttrKeyType as String       :  kSecAttrKeyTypeRSA, // Is for RSA
+            kSecAttrKeySizeInBits as String :  2048, // Size for RSA key
+            kSecPrivateKeyAttrs as String   :
+                [
+                    kSecAttrIsPermanent as String   : true,
+                    kSecAttrApplicationTag as String: keyTag
+                ]
+        ]
+        
+        var error: Unmanaged<CFError>?
+        
+        guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
+            print(error!.takeRetainedValue())
+            return (nil, nil)
+        }
+        
+        let publicKey = SecKeyCopyPublicKey(privateKey)
+        
+        return(privateKey, publicKey)
+        
+        
+        
+    }
+    
+    
+    static func encriptar(mensaje: String, llavePublica: String) -> String? {
+        
+        guard let data = Data(base64Encoded: llavePublica) else {
+            print("Error al convertir llave a base64")
+            return nil
+        }
+        
+        var atributos: CFDictionary {
+            return
+                [
+                    kSecAttrKeyType         : kSecAttrKeyTypeRSA,
+                    kSecAttrKeyClass        : kSecAttrKeyClassPublic,
+                    kSecAttrKeySizeInBits   : 2048,
+                    kSecReturnPersistentRef : kCFBooleanTrue
+            ] as CFDictionary
+            
+            
+        }
+        
+        var error: Unmanaged<CFError>? = nil
+        guard let secKey = SecKeyCreateWithData(data as CFData, atributos, &error) else {
+            print("Error al encriptar = \(error.debugDescription)")
+            return nil
+        }
+        
+        return encrypt(string: mensaje, pubKey: secKey)
+    }
+    
+    static private func encrypt(string: String, pubKey: SecKey) -> String? {
+        
+        let buffer = [UInt8](string.utf8)
+        
+        var keySize = SecKeyGetBlockSize( pubKey)
+        var keyBuffer = [UInt8] (repeating: 0, count: keySize)
+        
+        // Se genera el texto encriptado
+        
+        guard SecKeyEncrypt(pubKey, SecPadding.PKCS1, buffer, buffer.count, &keyBuffer, &keySize) == errSecSuccess else {return nil}
+        
+        return Data(bytes: keyBuffer, count: keySize).base64EncodedString()
+        
+    }
     
     
 }
