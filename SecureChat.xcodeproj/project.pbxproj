@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B218C56227E126500E2E7F9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218C55227E126500E2E7F9 /* Networking.swift */; };
+		7B218C58227E151C00E2E7F9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218C57227E151C00E2E7F9 /* SwiftyJSON.swift */; };
+		7B5960A62276268C005DC37D /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5960A52276268C005DC37D /* ChatsTableViewController.swift */; };
 		7BCDC710227512D000AB9F7F /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC70F227512D000AB9F7F /* RSA.swift */; };
 		7BCDC7122275222800AB9F7F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7112275222800AB9F7F /* User.swift */; };
 		7BCDC7152275255200AB9F7F /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7142275255200AB9F7F /* AppManager.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		05B5990CD695FD79B15AB85B /* Pods_SecureChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecureChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A1736DEAF705040436E5FC9 /* Pods-SecureChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.debug.xcconfig"; path = "Target Support Files/Pods-SecureChat/Pods-SecureChat.debug.xcconfig"; sourceTree = "<group>"; };
+		7B218C55227E126500E2E7F9 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		7B218C57227E151C00E2E7F9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		7B5960A52276268C005DC37D /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
 		7BCDC70F227512D000AB9F7F /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
 		7BCDC7112275222800AB9F7F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7BCDC7142275255200AB9F7F /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -72,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCDC7142275255200AB9F7F /* AppManager.swift */,
+				7B218C55227E126500E2E7F9 /* Networking.swift */,
 				7BCDC7162275261D00AB9F7F /* Persistencia.swift */,
 				7BCDC71B22752CE000AB9F7F /* BlackBox.swift */,
 			);
@@ -111,6 +118,8 @@
 				7BF327982274EFCD00A44432 /* LaunchViewController.swift */,
 				7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */,
 				7BCDC7242275379500AB9F7F /* LoginViewController.swift */,
+				7B5960A52276268C005DC37D /* ChatsTableViewController.swift */,
+				7B218C57227E151C00E2E7F9 /* SwiftyJSON.swift */,
 				7BCDC71922752BEC00AB9F7F /* LoginManager.swift */,
 				7BCDC7212275365E00AB9F7F /* UIElements */,
 				7BCDC71D22752D1B00AB9F7F /* Utilidades.swift */,
@@ -269,7 +278,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BCDC7252275379500AB9F7F /* LoginViewController.swift in Sources */,
+				7B5960A62276268C005DC37D /* ChatsTableViewController.swift in Sources */,
 				7BCDC7232275378D00AB9F7F /* SignUpViewController.swift in Sources */,
+				7B218C58227E151C00E2E7F9 /* SwiftyJSON.swift in Sources */,
 				7BCDC7122275222800AB9F7F /* User.swift in Sources */,
 				7BCDC7152275255200AB9F7F /* AppManager.swift in Sources */,
 				7BCDC71A22752BEC00AB9F7F /* LoginManager.swift in Sources */,
@@ -280,6 +291,7 @@
 				7BCDC710227512D000AB9F7F /* RSA.swift in Sources */,
 				7BCDC7172275261D00AB9F7F /* Persistencia.swift in Sources */,
 				7BCDC71C22752CE000AB9F7F /* BlackBox.swift in Sources */,
+				7B218C56227E126500E2E7F9 /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
