@@ -102,5 +102,32 @@ final class RSA {
         
     }
     
+    static private func selectE(p: Int, q: Int) -> Int{
+        //Select e: gcd(e,160)=1; choose e=7
+        //Determine d: de≡1 mod 160 and d < 160 Value is d=23 since 23x7=161= 1x160+1
     
+        let n = (p - 1) * (q - 1)
+        var r = Int.random(in: p...q)
+        while true {
+            if gcd(r: r, n: n) == 1 {
+                break
+            }else{
+                r = r + 1
+            }
+        }
+        return r        //r es la e
+    }
+    
+    static private func gcd(r: Int, n: Int) -> Int{
+        
+        if r == n {
+            return r
+        } else {
+            if r > n {
+                return gcd(r: r - n, n: n)
+            }else{
+                return gcd(r: r, n: n - r)
+            }
+        }
+    }
 }
