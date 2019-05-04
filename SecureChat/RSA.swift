@@ -153,7 +153,7 @@ final class RSA {
         //Determine d: de≡1 mod 160 and d < 160 Value is d=23 since 23x7=161= 1x160+1
     
         let n = (p - 1) * (q - 1)
-        var r = Int.random(in: p...q)
+        var r = p < q ? Int.random(in: p...q) : Int.random(in: q...p)
         while true {
             if gcd(r: r, n: n) == 1 {
                 break
@@ -164,16 +164,21 @@ final class RSA {
         return r        //r es la e
     }
     
-    static private func gcd(r: Int, n: Int) -> Int{
+    static private func gcd(_ m: Int, _ n: Int) -> Int{
+        var a: Int = 0
+        var b: Int = max(m, n)
+        var r: Int = min(m, n)
         
-        if r == n {
-            return r
-        } else {
-            if r > n {
-                return gcd(r: r - n, n: n)
-            }else{
-                return gcd(r: r, n: n - r)
-            }
+        while r != 0 {
+            a = b
+            b = r
+            r = a % b
         }
+        return b
+    }
+    
+    static private func determineD(e: Int, p: Int, q: Int) -> Int {
+        let n = (p - 1) * (q - 1)
+        
     }
 }
