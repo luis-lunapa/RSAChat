@@ -11,7 +11,48 @@ import Security
 
 final class RSA {
     
-    static func generarPrivateKey() {
+    /**
+     Generates a key pair for the RSA, both keys are stored in the system keychain and the public key should be posted
+     
+     - Author:
+     Luis Gerardo Luna
+     
+     - Parameters:
+        - tag: The email of the user will be used for generating the keys
+     
+     - Returns:
+     (SecKey?, SecKey?)
+     
+     - Version:
+     1.0
+     
+     - Copyright: Copyright © 2019 DeepTech.
+     */
+    
+    static func generateKeys(tag: String) -> (SecKey?, SecKey?) {
+        
+        let keyTag = "com.deepTech.SecureChat".data(using: .utf8)!
+        let attributes: [String: Any] =
+            [
+            kSecAttrKeyType as String       :  kSecAttrKeyTypeRSA, // Is for RSA
+            kSecAttrKeySizeInBits as String :  2048, // Size for RSA key
+            kSecPrivateKeyAttrs as String   :
+                [
+                    kSecAttrIsPermanent as String   : true,
+                    kSecAttrApplicationTag as String: keyTag
+                ]
+        ]
+        
+        var error: Unmanaged<CFError>?
+        
+        guard let privateKey = SecKeyCreateRandomKey(attributes as CFDictionary, &error) else {
+            print(error!.takeRetainedValue())
+            return (nil, nil)
+        }
+        
+        let publicKey = SecKeyCopyPublicKey(privateKey)
+        
+        return(privateKey, publicKey)
         
         
         
