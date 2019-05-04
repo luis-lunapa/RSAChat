@@ -29,6 +29,14 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.nameTextField.setBottomLine(borderColor: .gray)
+        self.emailTextField.setBottomLine(borderColor: .gray)
+        self.passwordTextField.setBottomLine(borderColor: .gray)
+        self.passwordConfirmTextField.setBottomLine(borderColor: .gray)
+    }
+    
     
     @IBAction func signupPressed(_ sender: Any) {
         // Registration code and go to chats
