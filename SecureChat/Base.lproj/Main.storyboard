@@ -383,7 +383,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abl-tR-1Zu">
-                                <rect key="frame" x="19" y="158" width="375" height="521"/>
+                                <rect key="frame" x="19" y="64" width="375" height="615"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fk-wb-nhU">
                                         <rect key="frame" x="133.5" y="25" width="108" height="35"/>
@@ -502,7 +502,7 @@
                             <constraint firstItem="uMo-fU-b4E" firstAttribute="bottom" secondItem="abl-tR-1Zu" secondAttribute="bottom" constant="183" id="6D1-O1-h06"/>
                             <constraint firstItem="abl-tR-1Zu" firstAttribute="leading" secondItem="uMo-fU-b4E" secondAttribute="leading" constant="19" id="8Cv-S5-k29"/>
                             <constraint firstItem="uMo-fU-b4E" firstAttribute="trailing" secondItem="abl-tR-1Zu" secondAttribute="trailing" constant="20" id="eMA-G9-aA2"/>
-                            <constraint firstItem="abl-tR-1Zu" firstAttribute="top" secondItem="uMo-fU-b4E" secondAttribute="top" constant="114" id="xFA-Lu-x5n"/>
+                            <constraint firstItem="abl-tR-1Zu" firstAttribute="top" secondItem="uMo-fU-b4E" secondAttribute="top" constant="20" id="xFA-Lu-x5n"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uMo-fU-b4E"/>
                     </view>

@@ -31,10 +31,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.nameTextField.setBottomLine(borderColor: .gray)
-        self.emailTextField.setBottomLine(borderColor: .gray)
-        self.passwordTextField.setBottomLine(borderColor: .gray)
-        self.passwordConfirmTextField.setBottomLine(borderColor: .gray)
+//        self.nameTextField.setBottomLine(borderColor: .gray)
+//        self.emailTextField.setBottomLine(borderColor: .gray)
+//        self.passwordTextField.setBottomLine(borderColor: .gray)
+//        self.passwordConfirmTextField.setBottomLine(borderColor: .gray)
     }
     
     
