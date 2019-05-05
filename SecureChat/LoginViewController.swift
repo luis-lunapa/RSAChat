@@ -36,10 +36,30 @@ class LoginViewController: UIViewController {
             self.showAlert(title: "Error", text: "You must specify your password")
             return
         }
-        let res = RSA.encriptar(mensaje: emailTextField.text!, llavePublica: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl/zjMK4w1XZAnpIqLeTAMW7cEUNIifP3HjmUavvc2+oPG1QjNCfxQM6LulZSl6qRim2JGxbc3yvnbMRJqch6IhJ/ysbTekVSqOjskIRGxq0pg0J8PqF3ZZQK6D7BYHi6iaJUMVV0ISB5LogJouyOWqsZyiEjgPz3jj0HIrh14Q6wPZVMpVbIwQR9nZp5gU5minseCyZfQs3PArgXgnzRPdw7Hb0/NY5OVE2Rz1SFTnda6w12SEu1IsVhVhJz1QteNrwNwJAT6WgZd+xnOZhU3Ei+EQK2SijfEGqmWNt1utJygK/0APy8w7VTol7ygbqfuHevGcg90QEXjxZKCjkXkQIDAQAB")
         
-        print("Encriptado === \(res)")
-        self.tempLogin(user: emailTextField.text!, pass: passwordTextField.text!)
+        let email       = emailTextField.text!
+        let password    = passwordTextField.text!
+        
+        AppManager.shared.networking.login(email: email, password: password).done {
+            usuario in
+            AppManager.shared.persistencia.currentUser = usuario
+            let vc = self.storyboard!.instantiateViewController(withIdentifier: "MainViewController")
+            self.present(vc, animated: true)
+        
+            
+            
+        }.catch {
+            error in
+            let error = error as NSError
+                
+                
+            self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
+                
+                
+                
+        }
+        
+    
         
         
     }
