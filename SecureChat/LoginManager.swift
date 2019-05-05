@@ -37,7 +37,7 @@ class LoginManager {
                
                 if let usuarioGuardado = listaLoca.first {
                     
-                    user = User.init(idUser: usuarioGuardado.idUser, token: usuarioGuardado.token, email: usuarioGuardado.email, name: usuarioGuardado.name, profilePic: usuarioGuardado.getProfileImageData())
+                    user = User.init(idUser: usuarioGuardado.idUser, token: usuarioGuardado.token, email: usuarioGuardado.email, name: usuarioGuardado.name, profilePic: nil)
                     
                 }
                 

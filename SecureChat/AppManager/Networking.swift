@@ -66,9 +66,7 @@ final class Networking {
                     print("Resultado == \(jsonData)")
                     let status = jsonData["status"].intValue
                     if status != 200 {
-                        
-                        
-                        
+  
                         os_log("createAccount: Status no fue el esperado = %{PRIVATE}@ mensaje = %{PRIVATE}@",
                                log: OSLog.registro, type: OSLogType.error,
                                String(describing: status),
@@ -77,9 +75,6 @@ final class Networking {
                         seal.reject(NSError(domain: "createAccount", code: 0, userInfo: ["msg": errorMessage]))
     
                     }
-                    
-                 
-                    
                     seal.fulfill(true)
                     
                     
@@ -90,25 +85,72 @@ final class Networking {
                            String(describing: email),
                            String(describing: response.error))
                     seal.reject(NSError(domain: "buscarEventos", code: 0, userInfo: ["msg": errorMessage]))
+                }
+                
+            }
+            
+        }
+    }
+    
+    func login(email: String, password: String) -> Promise<User> {
+        
+        let errorMessage = "Our server can not authenticate your account right now, try again"
+        
+        return Promise {
+            seal in
+            
+            let parameters: [String: String] = [
+                
+                "email"     : email,
+                "password"  : password,
+                
+                ]
+            
+            Alamofire.request(APIURL.luisUrl + "login.php", parameters: parameters).responseJSON {
+                response in
+                
+                if let data = response.result.value {
+                    let jsonData = JSON(data)
+                    print("Resultado == \(jsonData)")
                     
+                    let status = jsonData["status"].intValue
+                    if status != 200 {
+                        
+                        os_log("login: Status no fue el esperado = %{PRIVATE}@ mensaje = %{PRIVATE}@",
+                               log: OSLog.login, type: OSLogType.error,
+                               String(describing: status),
+                               String(describing: jsonData["msg"].stringValue))
+                        
+                        seal.reject(NSError(domain: "login", code: 0, userInfo: ["msg": errorMessage]))
+                        
+                    }
+                    
+                    let idUser = jsonData["data"]["idUser"].stringValue
+                    let token = jsonData["data"]["token"].stringValue
+                    let email = jsonData["data"]["email"].stringValue
+                    let name = jsonData["data"]["name"].stringValue
+                    let profilePic = jsonData["data"]["profilePic"].string
+                    
+                    let usuario = User.init(idUser: idUser, token: token, email: email, name: name, profilePic: profilePic)
+                    
+                    
+                    seal.fulfill(usuario)
+                    
+                    
+                } else {
+                    os_log("createAccount: Error al login email = %{PRIVATE}@  error = %{PRIVATE}@",
+                           log: OSLog.playback, type: OSLogType.error,
+                           String(describing: email),
+                           String(describing: response.error))
+                    seal.reject(NSError(domain: "buscarEventos", code: 0, userInfo: ["msg": errorMessage]))
                 }
                 
             }
             
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
-        
+
     }
     
     
