@@ -58,12 +58,12 @@ final class Networking {
                 
                 ]
             
-            Alamofire.request(APIURL.luisUrl + "creaCuenta", parameters: parameters).responseJSON {
+            Alamofire.request(APIURL.luisUrl + "creaCuenta.php", parameters: parameters).responseJSON {
                 response in
                 
                 if let data = response.result.value {
                     let jsonData = JSON(data)
-                    
+                    print("Resultado == \(jsonData)")
                     let status = jsonData["status"].intValue
                     if status != 200 {
                         

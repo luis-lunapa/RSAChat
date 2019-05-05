@@ -19,8 +19,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
-    var publicKey: String?
-    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +36,7 @@ class SignUpViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let (private_key, public_key) = RSA.generarLlaves()
         
-        print("Llaves = privada = \(private_key) publica = \(public_key)")
         
     }
     
@@ -63,7 +60,33 @@ class SignUpViewController: UIViewController {
         let email    = self.emailTextField.text!
         let password = self.passwordTextField.text!
         
-       
+        let (public_key, private_key) = RSA.generarLlaves()
+        
+        print("Llaves = privada = \(private_key) publica = \(public_key)")
+        
+   
+        AppManager.shared.networking.createAccount(name: name, email: email, password: password, public_key: public_key).done {
+            
+            ready in
+            
+            let alert = UIAlertController.init(title: "Welcome !!", message: "You can now login and start messaging 🥳", preferredStyle: .alert)
+            
+            let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(ok)
+            self.present(alert, animated: true, completion: nil)
+          
+
+        }.catch {
+            error in
+            let error = error as NSError
+            
+           
+            self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
+            
+                
+                
+        }
         
         
     }

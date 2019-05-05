@@ -83,7 +83,7 @@ final class RSA {
         
         let e = selectE(p: p, q: q) // Calcula E
         
-        let d = 4214
+        let d = determineD(e: e, p: p, q: q)
         
         
         // Lave publica e,n
@@ -104,7 +104,7 @@ final class RSA {
         RSA.savePublicKey(key: publicKey)
         
 
-        return (llavePublica,llavePrivada)
+        return (publicKey,privateKey)
 
     }
     
@@ -214,15 +214,18 @@ final class RSA {
         var m0 = m
         var y = 0
         var x = 1
+        
+        var e = e
 //
         if (m == 1) {
             return 0
         }
-        while a > 1 {
-            var q = Int(a / m)
+        
+        while e > 1 {
+            var q = Int(e / m)
             var t = m
-            m = a % m
-            a = t
+            m = e % m
+            e = t
             t = y
             y = x - q * y
             x = t
