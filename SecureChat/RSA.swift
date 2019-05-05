@@ -83,7 +83,7 @@ final class RSA {
         
         let e = selectE(p: p, q: q) // Calcula E
         
-        let d = 44
+        let d = 4214
         
         
         // Lave publica e,n
@@ -94,20 +94,46 @@ final class RSA {
         let llavePrivada = "\(d)%mod%\(n)"
         
         
-        let separadaPublica = llavePublica.components(separatedBy: "%mod%")
-        let separadaPrivada = llavePrivada.components(separatedBy: "%mod%")
+        let publicKey = llavePublica.data(using: .utf8)!.base64EncodedString()
+        let privateKey = llavePrivada.data(using: .utf8)!.base64EncodedString()
+ 
+        print("Public in base64 \(publicKey)")
+        print("Private in base64 \(privateKey)")
         
-        print("Separada publica = \(separadaPublica) separada privada = \(separadaPrivada)")
+        RSA.savePrivateKey(key: privateKey)
+        RSA.savePublicKey(key: publicKey)
         
-        
-        
-        
+
         return (llavePublica,llavePrivada)
+
+    }
+    
+    private static func savePrivateKey(key: String) {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(key, forKey: "private_key")
+
+      
+        
+    }
+    
+    private static func savePublicKey(key: String) {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(key, forKey: "public_key")
         
         
         
-        
-        
+    }
+    
+    static func getPrivateKey() -> String? {
+       return UserDefaults.standard.string(forKey: "private_key")
+    }
+    
+    static func getPublicKey() -> String? {
+        return UserDefaults.standard.string(forKey: "public_key")
     }
     
     
@@ -183,15 +209,27 @@ final class RSA {
         return b
     }
     
-    static private func determineD(e: Int, p: Int, q: Int) -> Int {
-        let n = (p - 1) * (q - 1)
-
-        e = e % n;
-        for i in 1...m {
-            if ((a * x) % m == 1){
-                return x
-            }
-        }
-        return 1;
-    }
+//    static private func determineD(e: Int, p: Int, q: Int) -> Int {
+//        let n = (p - 1) * (q - 1)
+//
+//        var i = 1
+//        while d < n {
+//
+//
+//            if ((ee * i) % n == 1){
+//                return i
+//            }
+//            i += 1
+//        }
+//
+//        let ee = e % n
+//
+//        for i in 1...n {
+//            if ((ee * i) % n == 1){
+//                return i
+//            }
+//        }
+//        return 1;
+//
+//    }
 }

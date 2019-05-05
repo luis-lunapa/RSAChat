@@ -19,6 +19,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
+    var publicKey: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +28,19 @@ class SignUpViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
         
+       
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         let (private_key, public_key) = RSA.generarLlaves()
         
         print("Llaves = privada = \(private_key) publica = \(public_key)")
         
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidLayoutSubviews() {
