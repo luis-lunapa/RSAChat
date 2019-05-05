@@ -76,19 +76,64 @@ final class RSA {
         let p = jsonData[randomP].intValue
         let q = jsonData[randomQ].intValue
         
+        let n = p * q
+        
+        print("p = \(p) q = \(q)")
+        
         
         let e = selectE(p: p, q: q) // Calcula E
         
+        let d = determineD(e: e, p: p, q: q)
+        
+        
+        // Lave publica e,n
+        // Llave privada d,n
+        
+        let llavePublica = "\(e)%mod%\(n)"
+        
+        let llavePrivada = "\(d)%mod%\(n)"
+        
+        
+        let publicKey = llavePublica.data(using: .utf8)!.base64EncodedString()
+        let privateKey = llavePrivada.data(using: .utf8)!.base64EncodedString()
+ 
+        print("Public in base64 \(publicKey)")
+        print("Private in base64 \(privateKey)")
+        
+        RSA.savePrivateKey(key: privateKey)
+        RSA.savePublicKey(key: publicKey)
+        
+
+        return (publicKey,privateKey)
+
+    }
+    
+    private static func savePrivateKey(key: String) {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(key, forKey: "private_key")
+
+      
+        
+    }
+    
+    private static func savePublicKey(key: String) {
+        
+        let defaults = UserDefaults.standard
+        
+        defaults.set(key, forKey: "public_key")
         
         
         
-        
-        return ("","")
-        
-        
-        
-        
-        
+    }
+    
+    static func getPrivateKey() -> String? {
+       return UserDefaults.standard.string(forKey: "private_key")
+    }
+    
+    static func getPublicKey() -> String? {
+        return UserDefaults.standard.string(forKey: "public_key")
     }
     
     
@@ -140,9 +185,9 @@ final class RSA {
         //Determine d: de≡1 mod 160 and d < 160 Value is d=23 since 23x7=161= 1x160+1
     
         let n = (p - 1) * (q - 1)
-        var r = Int.random(in: p...q)
+        var r = p < q ? Int.random(in: p...q) : Int.random(in: q...p)
         while true {
-            if gcd(r: r, n: n) == 1 {
+            if gcd(r, n) == 1 {
                 break
             }else{
                 r = r + 1
@@ -151,16 +196,43 @@ final class RSA {
         return r        //r es la e
     }
     
-    static private func gcd(r: Int, n: Int) -> Int{
+    static private func gcd(_ m: Int, _ n: Int) -> Int{
+        var a: Int = 0
+        var b: Int = max(m, n)
+        var r: Int = min(m, n)
         
-        if r == n {
-            return r
-        } else {
-            if r > n {
-                return gcd(r: r - n, n: n)
-            }else{
-                return gcd(r: r, n: n - r)
-            }
+        while r != 0 {
+            a = b
+            b = r
+            r = a % b
         }
+        return b
+    }
+    
+    static private func determineD(e: Int, p: Int, q: Int) -> Int {
+        var m = (p - 1) * (q - 1)
+        var m0 = m
+        var y = 0
+        var x = 1
+        
+        var e = e
+//
+        if (m == 1) {
+            return 0
+        }
+        
+        while e > 1 {
+            var q = Int(e / m)
+            var t = m
+            m = e % m
+            e = t
+            t = y
+            y = x - q * y
+            x = t
+        }
+        if x < 0 {
+            x = x + m0
+        }
+        return x
     }
 }
