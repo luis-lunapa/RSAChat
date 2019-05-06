@@ -96,7 +96,7 @@ $result = $db->querySelect(
 );
 
 
-if($user) {
+if(!$user) {
 
     $json['msg']            = 'Ya existe un usuario con este email';
     $json['status']         = 600;

@@ -10,6 +10,8 @@
 		7B218C56227E126500E2E7F9 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218C55227E126500E2E7F9 /* Networking.swift */; };
 		7B218C58227E151C00E2E7F9 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B218C57227E151C00E2E7F9 /* SwiftyJSON.swift */; };
 		7B5960A62276268C005DC37D /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5960A52276268C005DC37D /* ChatsTableViewController.swift */; };
+		7B9CF89A227FF35200B63F0D /* NewChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9CF899227FF35200B63F0D /* NewChatTableViewController.swift */; };
+		7B9CF89C227FF38400B63F0D /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9CF89B227FF38400B63F0D /* FriendTableViewCell.swift */; };
 		7BCDC710227512D000AB9F7F /* RSA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC70F227512D000AB9F7F /* RSA.swift */; };
 		7BCDC7122275222800AB9F7F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7112275222800AB9F7F /* User.swift */; };
 		7BCDC7152275255200AB9F7F /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7142275255200AB9F7F /* AppManager.swift */; };
@@ -21,6 +23,7 @@
 		7BCDC7232275378D00AB9F7F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */; };
 		7BCDC7252275379500AB9F7F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCDC7242275379500AB9F7F /* LoginViewController.swift */; };
 		7BE57074227E4B270037164C /* prime_number.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BE57073227E4B270037164C /* prime_number.json */; };
+		7BEB34E1227FDD7900F46134 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEB34E0227FDD7900F46134 /* Friend.swift */; };
 		7BF327972274EFCD00A44432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF327962274EFCD00A44432 /* AppDelegate.swift */; };
 		7BF327992274EFCD00A44432 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF327982274EFCD00A44432 /* LaunchViewController.swift */; };
 		7BF3279C2274EFCD00A44432 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BF3279A2274EFCD00A44432 /* Main.storyboard */; };
@@ -36,6 +39,8 @@
 		7B218C57227E151C00E2E7F9 /* SwiftyJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		7B2325CE227E61A500F3D511 /* SecureChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SecureChat.entitlements; sourceTree = "<group>"; };
 		7B5960A52276268C005DC37D /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
+		7B9CF899227FF35200B63F0D /* NewChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatTableViewController.swift; sourceTree = "<group>"; };
+		7B9CF89B227FF38400B63F0D /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		7BCDC70F227512D000AB9F7F /* RSA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSA.swift; sourceTree = "<group>"; };
 		7BCDC7112275222800AB9F7F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7BCDC7142275255200AB9F7F /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 		7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7BCDC7242275379500AB9F7F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7BE57073227E4B270037164C /* prime_number.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = prime_number.json; sourceTree = "<group>"; };
+		7BEB34E0227FDD7900F46134 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		7BF327932274EFCD00A44432 /* SecureChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF327962274EFCD00A44432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7BF327982274EFCD00A44432 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				7BCDC7112275222800AB9F7F /* User.swift */,
+				7BEB34E0227FDD7900F46134 /* Friend.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -123,6 +130,8 @@
 				7BCDC7222275378D00AB9F7F /* SignUpViewController.swift */,
 				7BCDC7242275379500AB9F7F /* LoginViewController.swift */,
 				7B5960A52276268C005DC37D /* ChatsTableViewController.swift */,
+				7B9CF899227FF35200B63F0D /* NewChatTableViewController.swift */,
+				7B9CF89B227FF38400B63F0D /* FriendTableViewCell.swift */,
 				7B218C57227E151C00E2E7F9 /* SwiftyJSON.swift */,
 				7BCDC71922752BEC00AB9F7F /* LoginManager.swift */,
 				7BCDC7212275365E00AB9F7F /* UIElements */,
@@ -299,6 +308,8 @@
 				7BCDC7152275255200AB9F7F /* AppManager.swift in Sources */,
 				7BCDC71A22752BEC00AB9F7F /* LoginManager.swift in Sources */,
 				7BF327992274EFCD00A44432 /* LaunchViewController.swift in Sources */,
+				7B9CF89A227FF35200B63F0D /* NewChatTableViewController.swift in Sources */,
+				7B9CF89C227FF38400B63F0D /* FriendTableViewCell.swift in Sources */,
 				7BF327972274EFCD00A44432 /* AppDelegate.swift in Sources */,
 				7BCDC71E22752D1B00AB9F7F /* Utilidades.swift in Sources */,
 				7BCDC7202275364B00AB9F7F /* RoundButton.swift in Sources */,
@@ -306,6 +317,7 @@
 				7BCDC7172275261D00AB9F7F /* Persistencia.swift in Sources */,
 				7BCDC71C22752CE000AB9F7F /* BlackBox.swift in Sources */,
 				7B218C56227E126500E2E7F9 /* Networking.swift in Sources */,
+				7BEB34E1227FDD7900F46134 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

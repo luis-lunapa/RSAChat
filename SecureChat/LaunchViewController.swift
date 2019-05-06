@@ -16,7 +16,7 @@ class LaunchViewController: UIViewController {
         if let user = LoginManager().localLogin() {
             
             AppManager.shared.persistencia.currentUser = user
-            self.goToApp()
+           self.goToApp()
             
             
         } else {
