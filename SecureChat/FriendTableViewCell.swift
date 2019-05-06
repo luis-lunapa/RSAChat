@@ -9,7 +9,14 @@
 import UIKit
 
 class FriendTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var name: UILabel!
+    
+    @IBOutlet weak var email: UILabel!
+    
+    @IBOutlet weak var hour: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -9,38 +9,116 @@
 import UIKit
 
 class NewChatTableViewController: UITableViewController {
+    var allFriends = [Friend]()
+    var lookingFriends = [Friend]()
+    
+    var isSearching = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getAllFriends()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func getAllFriends() {
+        
+        
+        AppManager.shared.networking.getAllUsers().done {
+            friends in
+            self.allFriends = friends
+            self.tableView.reloadData()
+            
+            }.catch {
+                error in
+                let error = error as NSError
+                
+                
+                self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
+                
+                
+                
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if isSearching {
+            return self.lookingFriends.count
+        }
+        
+        return self.allFriends.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        
+        if self.isSearching {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath) as! FriendTableViewCell
+            let f = self.lookingFriends[indexPath.row]
+            
+            cell.name.text = f.name
+            cell.email.text = f.email
+            cell.hour.text = "9:40"
+            
+         
+            
+            return cell
+            
+            
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "friend", for: indexPath) as! FriendTableViewCell
+            
+            let f = self.allFriends[indexPath.row]
+            
+            cell.name.text = f.name
+            cell.email.text = f.email
+            cell.hour.text = "9:40"
+            
+            return cell
+        }
+        
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if isSearching {
+            let selectedFriend = self.lookingFriends[indexPath.row]
+            
+            /// Mostrar pantalla de chat
+            
+        } else {
+             let selectedFriend = self.allFriends[indexPath.row]
+        }
+        
+        
+        
+        
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func showAlert(title: String, text: String) {
+        
+        let alert = UIAlertController.init(title: title, message: text, preferredStyle: .alert)
+        
+        let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+        
+        alert.addAction(ok)
+        self.present(alert, animated: true)
+        
+    }
+ 
 
     /*
     // Override to support conditional editing of the table view.

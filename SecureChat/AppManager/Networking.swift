@@ -44,7 +44,7 @@ final class Networking {
      */
     
     func createAccount(name: String, email: String, password: String, public_key: String) -> Promise<Bool> {
-        let errorMessage = "Your account could not be created, try again"
+        var errorMessage = "Your account could not be created, try again"
         
         return Promise {
             seal in
@@ -66,6 +66,10 @@ final class Networking {
                     print("Resultado == \(jsonData)")
                     let status = jsonData["status"].intValue
                     if status != 200 {
+                        
+                        if status == 701 {
+                            errorMessage = "The email address is already registered"
+                        }
   
                         os_log("createAccount: Status no fue el esperado = %{PRIVATE}@ mensaje = %{PRIVATE}@",
                                log: OSLog.registro, type: OSLogType.error,
@@ -138,9 +142,80 @@ final class Networking {
                     
                     
                 } else {
-                    os_log("createAccount: Error al login email = %{PRIVATE}@  error = %{PRIVATE}@",
-                           log: OSLog.playback, type: OSLogType.error,
+                    os_log("login: Error al login email = %{PRIVATE}@  error = %{PRIVATE}@",
+                           log: OSLog.login, type: OSLogType.error,
                            String(describing: email),
+                           String(describing: response.error))
+                    seal.reject(NSError(domain: "login", code: 0, userInfo: ["msg": errorMessage]))
+                }
+                
+            }
+            
+            
+            
+        }
+
+    }
+    
+    func getAllUsers() -> Promise<[Friend]> {
+        var errorMessage = "Could not get all friends list"
+        
+        var friends = [Friend]()
+        
+        return Promise {
+            seal in
+            
+            guard let user = AppManager.shared.persistencia.currentUser else {
+                seal.reject(NSError(domain: "getAllUsers", code: 0, userInfo: ["msg": "Invalid login"]))
+                return 
+            }
+            
+            let parameters: [String: String] = [
+                
+                "token"     : user.token,
+                "idUser"    : user.idUser
+                
+                ]
+            
+            Alamofire.request(APIURL.luisUrl + "getAllUsers.php", parameters: parameters).responseJSON {
+                response in
+                
+                if let data = response.result.value {
+                    let jsonData = JSON(data)
+                    print("Resultado == \(jsonData)")
+                    
+                    let status = jsonData["status"].intValue
+                    if status != 200 {
+                        
+                        os_log("getAllUsers: Status no fue el esperado = %{PRIVATE}@ mensaje = %{PRIVATE}@",
+                               log: OSLog.login, type: OSLogType.error,
+                               String(describing: status),
+                               String(describing: jsonData["msg"].stringValue))
+                        
+                        seal.reject(NSError(domain: "getAllUsers", code: 0, userInfo: ["msg": errorMessage]))
+                        
+                    }
+                    
+                    let jsonFriends = jsonData["data"].arrayValue
+                    
+                    for f in jsonFriends {
+                        
+                        let name = f["name"].stringValue
+                        let email = f["email"].stringValue
+                        let public_key = f["public_key"].stringValue
+                        
+                        
+                        let friend = Friend.init(name: name, email: email, public_key: public_key)
+                        friends.append(friend)
+                    }
+                    
+                    
+                    seal.fulfill(friends)
+                    
+                    
+                } else {
+                    os_log("createAccount: Error al login error = %{PRIVATE}@",
+                           log: OSLog.playback, type: OSLogType.error,
                            String(describing: response.error))
                     seal.reject(NSError(domain: "buscarEventos", code: 0, userInfo: ["msg": errorMessage]))
                 }
@@ -150,7 +225,10 @@ final class Networking {
             
             
         }
-
+        
+        
+        
+        
     }
     
     

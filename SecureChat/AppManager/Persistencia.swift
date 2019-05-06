@@ -24,10 +24,10 @@ class Persistencia {
             
             let config = Realm.Configuration(
                 encryptionKey: getKey() as Data,
-                schemaVersion: 0,
+                schemaVersion: 1,
                 migrationBlock: { migration, oldSchemaVersion in
                     
-                    if oldSchemaVersion < 0 {
+                    if oldSchemaVersion < 1 {
                         print("Actualizando Schema !!!!")
                         
                     }

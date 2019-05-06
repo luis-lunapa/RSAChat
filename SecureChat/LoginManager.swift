@@ -28,7 +28,7 @@ class LoginManager {
             return nil
         }
         
-        performUIUpdatesOnMain {
+      //  performUIUpdatesOnMain {
             let listaLoca = realm.objects(User.self)
             if listaLoca.isEmpty {
                 os_log("No hay ningún usuario para relogin", log: OSLog.reLogin, type: .info)
@@ -39,13 +39,14 @@ class LoginManager {
                     
                     user = User.init(idUser: usuarioGuardado.idUser, token: usuarioGuardado.token, email: usuarioGuardado.email, name: usuarioGuardado.name, profilePic: nil)
                     
+                    
                 }
                 
                 
                 
             }
             
-        }
+       // }
         
         return user
     }

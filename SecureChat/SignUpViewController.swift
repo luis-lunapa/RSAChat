@@ -68,14 +68,24 @@ class SignUpViewController: UIViewController {
         AppManager.shared.networking.createAccount(name: name, email: email, password: password, public_key: public_key).done {
             
             ready in
+//
+//            let alert = UIAlertController.init(title: "Welcome !!", message: "You can now login and start messaging 🥳", preferredStyle: .alert)
+//
+//            let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
+//
+//            alert.addAction(ok)
+//
+//            self.dismiss(animated: true) {
+//                 self.present(alert, animated: true)
+//            }
             
-            let alert = UIAlertController.init(title: "Welcome !!", message: "You can now login and start messaging 🥳", preferredStyle: .alert)
+//
+            let alert = Utilidades.showMessageCompletion(title: "Welcome !!", text: "You can now login and start messaging 🥳", block: {
+                 self.dismiss(animated: true)
+            })
             
-            let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(ok)
-            self.present(alert, animated: true, completion: nil)
-          
+            self.present(alert, animated: true)
+         
 
         }.catch {
             error in
