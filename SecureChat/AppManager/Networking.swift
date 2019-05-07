@@ -233,6 +233,71 @@ final class Networking {
         
     }
     
+    func sendMessage(toIdUSer: String, msg: String) -> Promise<Bool> {
+        
+        var errorMessage = "Could not send message"
+        
+        
+        
+        return Promise {
+            seal in
+            
+            guard let user = AppManager.shared.persistencia.currentUser else {
+                seal.reject(NSError(domain: "sendMessage", code: 0, userInfo: ["msg": "Invalid login"]))
+                return
+            }
+            
+            let parameters: [String: String] = [
+                
+                "token"       : user.token,
+                "toIdUser"    : toIdUSer,
+                "fromIdUser"  : user.idUser,
+                "message"     : msg
+                
+                
+            ]
+            
+            Alamofire.request(APIURL.luisUrl + "sendMessage.php", parameters: parameters).responseJSON {
+                response in
+                
+                if let data = response.result.value {
+                    let jsonData = JSON(data)
+                    print("Resultado == \(jsonData)")
+                    
+                    let status = jsonData["status"].intValue
+                    if status != 200 {
+                        
+                        os_log("sendMessage: Status no fue el esperado = %{PRIVATE}@ mensaje = %{PRIVATE}@",
+                               log: OSLog.login, type: OSLogType.error,
+                               String(describing: status),
+                               String(describing: jsonData["msg"].stringValue))
+                        
+                        seal.reject(NSError(domain: "sendMessage", code: 0, userInfo: ["msg": errorMessage]))
+                        
+                    }
+                    
+                    
+                    
+                    
+                    seal.fulfill(true)
+                    
+                    
+                } else {
+                    os_log("sendMessage: Error al enviar message error = %{PRIVATE}@",
+                           log: OSLog.playback, type: OSLogType.error,
+                           String(describing: response.error))
+                    seal.reject(NSError(domain: "sendMessage", code: 0, userInfo: ["msg": errorMessage]))
+                }
+                
+            }
+            
+            
+            
+        }
+        
+        
+    }
+    
     
     
     
