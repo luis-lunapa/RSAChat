@@ -67,18 +67,22 @@ extension ChatsViewController: UICollectionViewDelegate, UICollectionViewDataSou
             let estimatedFrame = NSString(string: messageText).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)], context: nil)
             
             if !msg.sentByMe {
-                cell.messageTextView.frame = CGRect.init(x: 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
+                cell.messageTextView.frame = CGRect.init(x: 48 + 8, y: 0, width: estimatedFrame.width + 16, height: estimatedFrame.height + 20)
                 cell.textBubbleView.frame = CGRect.init(x: 48, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
                 cell.textBubbleView.backgroundColor = UIColor.init(white: 0.95, alpha: 1)
+                cell.messageTextView.textColor = .black
             } else {
+                
+                cell.messageTextView.frame =  CGRect.init(x: view.frame.width - estimatedFrame.width - 32, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
                
                 
-                cell.textBubbleView.frame = CGRect.init(x: view.frame.width - estimatedFrame.width - 16 - 12, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
+                cell.textBubbleView.frame = CGRect.init(x: view.frame.width - estimatedFrame.width - 16 - 8 - 16, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
                 
-                cell.messageTextView.frame =  CGRect.init(x: view.frame.width - 12, y: 0, width: estimatedFrame.width + 16 + 8, height: estimatedFrame.height + 20)
+              
                 
                 cell.textBubbleView.backgroundColor = UIColor.init(red: 0, green: 137/255, blue: 249/255, alpha: 1)
-                
+                cell.messageTextView.textColor = .white
+                cell.profileImageView.isHidden = true
             }
             
             
