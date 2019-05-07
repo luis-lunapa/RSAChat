@@ -33,8 +33,19 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     
     var messagesTimer: Timer?
     
+    private let refreshController = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Agregar refreshing
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = self.refreshController
+        } else {
+            self.collectionView.addSubview(self.refreshController)
+        }
+        
+        refreshController.addTarget(self, action: #selector(self.getMessages), for: .valueChanged)
        
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -43,45 +54,52 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
-        self.messages = [Message.init(plainText: "Hello", sentByMe: true), Message.init(plainText: "Who are you?", sentByMe: false), Message.init(plainText: "My name is Luis", sentByMe: true), Message.init(plainText: "What do you want ?", sentByMe: false) ]
+     
         self.collectionView.delegate    = self
         self.collectionView.dataSource  = self
-        
-        //self.msgTextView.inputAccessoryView = self.messageComposerView
+      
         
         self.messageTxtView.layer.cornerRadius = 12
         
-//        messagesTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) {
-//            timer in
-            self.getMessages()
-     //   }
-        
 
-        // Do any additional setup after loading the view.
+            self.getMessages()
+
     }
     
     @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
     
-    func getMessages() {
+    @objc func getMessages() {
         
         let user = AppManager.shared.persistencia.currentUser!
         
         AppManager.shared.networking.getMessages(fromIdUser: self.friend.idUser).done {
             messages in
             
-            self.messages = messages
-            for m in self.messages {
-                m.plainText = NewRSA.decrypt(cipher: m.base64EncryptedString!, private_key: user.privateKey)
-            }
+            var realMessages = [Message]()
             
+            
+            for m in messages {
+                
+                if m.sentByMe {
+                    if let message = user.getMessage(idMessage: m.idMessage) {
+                        realMessages.append(message)
+                    }
+                } else {
+                    m.plainText = NewRSA.decrypt(cipher: m.base64EncryptedString!, private_key: user.privateKey)
+                    realMessages.append(m)
+                }
+                
+            }
+            self.collectionView.refreshControl?.endRefreshing()
+            self.messages = realMessages
             self.collectionView.reloadData()
 
             }.catch {
                 error in
                 let error = error as NSError
-                
+                self.collectionView.refreshControl?.endRefreshing()
                 
                 self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
                 
@@ -103,14 +121,16 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         
         if let cipherText = cipher {
             
-            AppManager.shared.networking.sendMessage(toIdUSer: self.friend.idUser, msg: cipherText).done {
-                ready in
-                let msg = Message.init(plainText: self.messageTxtView.text, sentByMe: true)
+            AppManager.shared.networking.sendMessage(toIdUSer: self.friend.idUser, cipher: cipherText, plain: msg).done {
+                message in
+                
                 self.messageTxtView.text = ""
                 self.messageTxtView.resignFirstResponder()
                 
-                self.messages.append(msg)
+                self.messages.append(message)
                 self.collectionView.reloadData()
+                
+                AppManager.shared.persistencia.currentUser!.messagesSent.append(message)
                 
                 
 

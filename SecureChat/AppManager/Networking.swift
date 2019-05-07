@@ -233,7 +233,7 @@ final class Networking {
         
     }
     
-    func sendMessage(toIdUSer: String, msg: String) -> Promise<Bool> {
+    func sendMessage(toIdUSer: String, cipher: String, plain: String) -> Promise<Message> {
         
         var errorMessage = "Could not send message"
         
@@ -252,7 +252,7 @@ final class Networking {
                 "token"       : user.token,
                 "toIdUser"    : toIdUSer,
                 "fromIdUser"  : user.idUser,
-                "message"     : msg
+                "message"     : cipher
                 
                 
             ]
@@ -276,10 +276,13 @@ final class Networking {
                         
                     }
                     
+                    let idMessage = jsonData["idMessage"].stringValue
+                    
+                    let message = Message.init(idMessage: idMessage, plainText: plain, sentByMe: true)
                     
                     
                     
-                    seal.fulfill(true)
+                    seal.fulfill(message)
                     
                     
                 } else {

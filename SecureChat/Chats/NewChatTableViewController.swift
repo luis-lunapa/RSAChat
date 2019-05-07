@@ -13,10 +13,21 @@ class NewChatTableViewController: UITableViewController {
     var lookingFriends = [Friend]()
     
     var isSearching = false
+    
+    private let refreshController = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAllFriends()
+        
+        //Agregar refreshing
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = self.refreshController
+        } else {
+            self.tableView.addSubview(self.refreshController)
+        }
+        
+        refreshController.addTarget(self, action: #selector(self.getAllFriends), for: .valueChanged)
 
         // Uncomment the following line to preserve selection between presentations
          //self.clearsSelectionOnViewWillAppear = false
@@ -25,19 +36,20 @@ class NewChatTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func getAllFriends() {
+    @objc func getAllFriends() {
         
         
         AppManager.shared.networking.getAllUsers().done {
             friends in
             self.allFriends = friends
             self.tableView.reloadData()
+            self.tableView.refreshControl?.endRefreshing()
             
             }.catch {
                 error in
                 let error = error as NSError
                 
-                
+                self.tableView.refreshControl?.endRefreshing()
                 self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
                 
                 

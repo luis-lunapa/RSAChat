@@ -19,6 +19,10 @@ import RealmSwift
     dynamic var privateKey: String? = ""
     @objc private dynamic var profilePicData: Data?
     
+    dynamic var messagesSent = [Message]()
+    
+    
+    
     convenience init (idUser: String, token: String, email: String, name: String, profilePic: String?) {
         self.init()
         self.idUser         = idUser
@@ -38,6 +42,18 @@ import RealmSwift
             }
         }
         return nil
+    }
+    
+    func getMessage(idMessage: String) -> Message? {
+        
+        for m in self.messagesSent {
+            if m.idMessage == idMessage {
+                return m
+            }
+            
+        }
+        return nil
+        
     }
     
     func getProfileImageData() -> Data? {
