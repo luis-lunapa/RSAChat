@@ -266,28 +266,34 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzH-Z3-EDI">
                                 <rect key="frame" x="0.0" y="807" width="414" height="89"/>
                                 <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNl-FM-WoO">
+                                        <rect key="frame" x="16" y="8" width="294" height="56"/>
+                                        <color key="backgroundColor" white="0.91062000570776247" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="294" id="RcS-KS-ScS"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="VuN-js-mBZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g19-fO-oZ2">
-                                        <rect key="frame" x="318" y="17" width="72" height="38"/>
+                                        <rect key="frame" x="320" y="17" width="72" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="72" id="csB-j0-wEB"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Send"/>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNl-FM-WoO">
-                                        <rect key="frame" x="16" y="8" width="294" height="56"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="PNl-FM-WoO" firstAttribute="leading" secondItem="ZzH-Z3-EDI" secondAttribute="leading" constant="16" id="EaY-WQ-llY"/>
-                                    <constraint firstAttribute="trailing" secondItem="g19-fO-oZ2" secondAttribute="trailing" constant="24" id="TOI-eq-UW1"/>
+                                    <constraint firstAttribute="trailing" secondItem="g19-fO-oZ2" secondAttribute="trailing" constant="22" id="TOI-eq-UW1"/>
                                     <constraint firstItem="PNl-FM-WoO" firstAttribute="top" secondItem="ZzH-Z3-EDI" secondAttribute="top" constant="8" id="VoU-Tt-XWM"/>
                                     <constraint firstItem="g19-fO-oZ2" firstAttribute="centerY" secondItem="PNl-FM-WoO" secondAttribute="centerY" id="ZFL-eL-Wog"/>
-                                    <constraint firstItem="g19-fO-oZ2" firstAttribute="leading" secondItem="PNl-FM-WoO" secondAttribute="trailing" constant="8" id="bWJ-5C-sBt"/>
+                                    <constraint firstItem="g19-fO-oZ2" firstAttribute="leading" secondItem="PNl-FM-WoO" secondAttribute="trailing" constant="10" id="bWJ-5C-sBt"/>
+                                    <constraint firstItem="PNl-FM-WoO" firstAttribute="leading" secondItem="ZzH-Z3-EDI" secondAttribute="leading" constant="16" id="o9D-MU-imU"/>
+                                    <constraint firstAttribute="bottom" secondItem="PNl-FM-WoO" secondAttribute="bottom" constant="25" id="oeI-w1-zbx"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-LV-db5">

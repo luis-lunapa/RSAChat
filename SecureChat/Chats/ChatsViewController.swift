@@ -24,6 +24,8 @@ class ChatsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.messages = [Message.init(plainText: "Hello", sentByMe: true), Message.init(plainText: "Who are you?", sentByMe: false), Message.init(plainText: "My name is Luis", sentByMe: true), Message.init(plainText: "What do you want ?", sentByMe: false) ]
         self.collectionView.delegate    = self
         self.collectionView.dataSource  = self
@@ -31,6 +33,10 @@ class ChatsViewController: UIViewController {
         self.msgTextView.inputAccessoryView = self.messageComposerView
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(trie)
     }
     
 
