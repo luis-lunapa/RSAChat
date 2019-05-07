@@ -26,6 +26,7 @@ class ChatsViewController: UIViewController {
         super.viewDidLoad()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
         self.messages = [Message.init(plainText: "Hello", sentByMe: true), Message.init(plainText: "Who are you?", sentByMe: false), Message.init(plainText: "My name is Luis", sentByMe: true), Message.init(plainText: "What do you want ?", sentByMe: false) ]
         self.collectionView.delegate    = self
         self.collectionView.dataSource  = self
