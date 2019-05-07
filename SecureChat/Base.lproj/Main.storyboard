@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yMy-pK-u7N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="o0Y-60-g1y">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -258,87 +258,122 @@
         <!--Juan Perez-->
         <scene sceneID="TAL-af-nqT">
             <objects>
-                <viewController storyboardIdentifier="chatView" title="Juan Perez" id="o0Y-60-g1y" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="chatView" title="Juan Perez" id="o0Y-60-g1y" customClass="ChatsViewController" customModule="SecureChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ody-Q1-fNv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZzH-Z3-EDI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzH-Z3-EDI">
                                 <rect key="frame" x="0.0" y="807" width="414" height="89"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g19-fO-oZ2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g19-fO-oZ2">
                                         <rect key="frame" x="318" y="17" width="72" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="72" id="csB-j0-wEB"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Send"/>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNl-FM-WoO">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNl-FM-WoO">
                                         <rect key="frame" x="16" y="8" width="294" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="PNl-FM-WoO" firstAttribute="leading" secondItem="ZzH-Z3-EDI" secondAttribute="leading" constant="16" id="EaY-WQ-llY"/>
+                                    <constraint firstAttribute="trailing" secondItem="g19-fO-oZ2" secondAttribute="trailing" constant="24" id="TOI-eq-UW1"/>
+                                    <constraint firstItem="PNl-FM-WoO" firstAttribute="top" secondItem="ZzH-Z3-EDI" secondAttribute="top" constant="8" id="VoU-Tt-XWM"/>
+                                    <constraint firstItem="g19-fO-oZ2" firstAttribute="centerY" secondItem="PNl-FM-WoO" secondAttribute="centerY" id="ZFL-eL-Wog"/>
+                                    <constraint firstItem="g19-fO-oZ2" firstAttribute="leading" secondItem="PNl-FM-WoO" secondAttribute="trailing" constant="8" id="bWJ-5C-sBt"/>
+                                </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-LV-db5">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CHJ-LV-db5">
                                 <rect key="frame" x="0.0" y="88" width="414" height="720"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gBz-fQ-qoh">
-                                    <size key="itemSize" width="176" height="68"/>
+                                    <size key="itemSize" width="414" height="68"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="jfN-oY-lwB">
-                                        <rect key="frame" x="0.0" y="0.0" width="176" height="68"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="friendMsg" id="jfN-oY-lwB" customClass="MessageCollectionViewCell" customModule="SecureChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="176" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ke5-rk-yBe">
-                                                    <rect key="frame" x="10" y="0.0" width="166" height="68"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HeN-oW-pA6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="189" height="68"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium ad mini" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SMw-QD-Od4">
+                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="68"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mUU-0j-Lzm">
-                                        <rect key="frame" x="238" y="0.0" width="176" height="68"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="176" height="68"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHC-mE-nwY">
-                                                    <rect key="frame" x="9" y="0.0" width="167" height="68"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <color key="backgroundColor" red="0.30857454080000002" green="0.44131662519999998" blue="0.92164036130000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="messageTextView" destination="SMw-QD-Od4" id="oXM-A7-eYI"/>
+                                            <outlet property="textBubbleView" destination="HeN-oW-pA6" id="3Og-al-f2d"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZzH-Z3-EDI" firstAttribute="leading" secondItem="aF0-pO-8ss" secondAttribute="leading" id="1ql-p5-EgL"/>
+                            <constraint firstItem="ZzH-Z3-EDI" firstAttribute="centerX" secondItem="Ody-Q1-fNv" secondAttribute="centerX" id="4c9-DX-kpl"/>
+                            <constraint firstItem="aF0-pO-8ss" firstAttribute="bottom" secondItem="CHJ-LV-db5" secondAttribute="bottom" constant="54" id="7Hf-0T-buk"/>
+                            <constraint firstItem="ZzH-Z3-EDI" firstAttribute="trailing" secondItem="aF0-pO-8ss" secondAttribute="trailing" id="9Ke-hF-bB4"/>
+                            <constraint firstItem="PNl-FM-WoO" firstAttribute="bottom" secondItem="aF0-pO-8ss" secondAttribute="bottom" constant="9" id="WcK-Nk-5cM"/>
+                            <constraint firstItem="CHJ-LV-db5" firstAttribute="leading" secondItem="aF0-pO-8ss" secondAttribute="leading" id="WuC-Ls-61O"/>
+                            <constraint firstItem="CHJ-LV-db5" firstAttribute="top" secondItem="aF0-pO-8ss" secondAttribute="top" id="h46-5B-jk6"/>
+                            <constraint firstItem="CHJ-LV-db5" firstAttribute="trailing" secondItem="aF0-pO-8ss" secondAttribute="trailing" id="ncY-EW-h1Q"/>
+                            <constraint firstItem="ZzH-Z3-EDI" firstAttribute="top" secondItem="aF0-pO-8ss" secondAttribute="top" constant="719" id="oa6-Wv-OTW"/>
+                            <constraint firstAttribute="bottom" secondItem="ZzH-Z3-EDI" secondAttribute="bottom" id="xqf-kY-xaA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aF0-pO-8ss"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="CHJ-LV-db5" id="o1U-Hb-U56"/>
+                        <outlet property="messageComposerView" destination="1N6-mn-9mo" id="men-i3-Exv"/>
+                        <outlet property="msgTextView" destination="PNl-FM-WoO" id="gjt-sc-jcJ"/>
+                        <outlet property="sendButton" destination="g19-fO-oZ2" id="e0r-Sh-ZfK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qw8-j2-frw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="1N6-mn-9mo">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qx-Cr-kpc">
+                            <rect key="frame" x="318" y="17" width="72" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="Send"/>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LB6-KV-pUf">
+                            <rect key="frame" x="16" y="8" width="294" height="56"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="ZdS-wS-Khz"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2259.4202898550725" y="1335.9375"/>
         </scene>
