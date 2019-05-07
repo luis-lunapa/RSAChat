@@ -10,18 +10,20 @@ import Foundation
 
 class Message {
     
+    var idMessage: String?
     var base64EncryptedString: String?
     var plainText: String?
     var sentByMe: Bool
     
     
-    init (base64: String, sentByMe: Bool) {
+    init (idMessage: String, base64: String, sentByMe: Bool) {
+        self.idMessage = idMessage
         self.base64EncryptedString = base64
         self.sentByMe = sentByMe
     }
     
     init(plainText: String, sentByMe: Bool) {
-        
+   
         self.plainText = plainText
         self.sentByMe = sentByMe
     }

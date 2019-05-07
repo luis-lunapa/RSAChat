@@ -298,6 +298,83 @@ final class Networking {
         
     }
     
+    func getMessages(fromIdUser: String) -> Promise<[Message]> {
+        
+        var errorMessage = "Could not get messages"
+        var messages = [Message]()
+        
+        
+        return Promise {
+            seal in
+            
+            guard let user = AppManager.shared.persistencia.currentUser else {
+                seal.reject(NSError(domain: "getMessages", code: 0, userInfo: ["msg": "Invalid login"]))
+                return
+            }
+            
+            let parameters: [String: String] = [
+                
+                "token"       : user.token,
+                "idUser"      : user.idUser,
+                "fromIdUser"  : fromIdUser
+             
+                
+            ]
+            
+            Alamofire.request(APIURL.luisUrl + "getMessages.php", parameters: parameters).responseJSON {
+                response in
+                
+                if let data = response.result.value {
+                    let jsonData = JSON(data)
+                    print("Resultado == \(jsonData)")
+                    
+                    let status = jsonData["status"].intValue
+                    if status != 200 {
+                        
+                        os_log("getMessages: Status no fue el esperado = %{PRIVATE}@ mensaje = %{PRIVATE}@",
+                               log: OSLog.login, type: OSLogType.error,
+                               String(describing: status),
+                               String(describing: jsonData["msg"].stringValue))
+                        
+                        seal.reject(NSError(domain: "getMessages", code: 0, userInfo: ["msg": errorMessage]))
+                        
+                    }
+                    
+                    let msgs = jsonData["data"].arrayValue
+                    
+                    for m in msgs {
+                        
+                        let id = m["idMessage"].stringValue
+                        let base64 = m["text"].stringValue
+                        let sentByMe = m["sentByMe"].boolValue
+                        
+                        let msg = Message.init(idMessage: id, base64: base64, sentByMe: sentByMe)
+                        messages.append(msg)
+                    }
+                    
+                    
+                    
+                    
+                    seal.fulfill(messages)
+                    
+                    
+                } else {
+                    os_log("getMessages: Error al obtener message error = %{PRIVATE}@",
+                           log: OSLog.playback, type: OSLogType.error,
+                           String(describing: response.error))
+                    seal.reject(NSError(domain: "getMessages", code: 0, userInfo: ["msg": errorMessage]))
+                }
+                
+            }
+            
+            
+            
+        }
+        
+        
+        
+    }
+    
     
     
     

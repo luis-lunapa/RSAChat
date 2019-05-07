@@ -31,6 +31,8 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     
     var friend: Friend!
     
+    var messagesTimer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -49,6 +51,11 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         
         self.messageTxtView.layer.cornerRadius = 12
         
+//        messagesTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) {
+//            timer in
+            self.getMessages()
+     //   }
+        
 
         // Do any additional setup after loading the view.
     }
@@ -57,9 +64,30 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         self.view.endEditing(true)
     }
     
-    @objc func getMessages() {
+    func getMessages() {
         
+        let user = AppManager.shared.persistencia.currentUser!
         
+        AppManager.shared.networking.getMessages(fromIdUser: self.friend.idUser).done {
+            messages in
+            
+            self.messages = messages
+            for m in self.messages {
+                m.plainText = NewRSA.decrypt(cipher: m.base64EncryptedString!, private_key: user.privateKey)
+            }
+            
+            self.collectionView.reloadData()
+
+            }.catch {
+                error in
+                let error = error as NSError
+                
+                
+                self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
+                
+                
+                
+        }
     }
 
     
@@ -77,9 +105,24 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
             
             AppManager.shared.networking.sendMessage(toIdUSer: self.friend.idUser, msg: cipherText).done {
                 ready in
+                let msg = Message.init(plainText: self.messageTxtView.text, sentByMe: true)
                 self.messageTxtView.text = ""
                 self.messageTxtView.resignFirstResponder()
+                
+                self.messages.append(msg)
+                self.collectionView.reloadData()
+                
+                
 
+                }.catch {
+                    error in
+                    let error = error as NSError
+                    
+                    
+                    self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
+                    
+                    
+                    
             }
         } else {
             self.showAlert(title: "Error :(", text: "Message could not be encrypted")
