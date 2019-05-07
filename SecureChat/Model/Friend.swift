@@ -11,6 +11,7 @@ import Security
 
 class Friend {
     
+    let idUser: String
     let name: String
     let email: String
     let public_key_base64: String
@@ -22,8 +23,8 @@ class Friend {
     var publicK: SecKey?
     
     
-    init(name: String, email: String, public_key: String) {
-        
+    init(idUser: String, name: String, email: String, public_key: String) {
+        self.idUser     = idUser
         self.name       = name
         self.email      = email
         self.public_key_base64 = public_key

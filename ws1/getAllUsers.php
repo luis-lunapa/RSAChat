@@ -87,7 +87,8 @@ $result = $db->querySelect(
     "SELECT
         u.name,
         u.email,
-        u.public_key
+        u.public_key,
+        u.idUser
     FROM
        User u 
     WHERE 
@@ -113,7 +114,9 @@ array_push($usuarios, array(
 
 'name' => $row['name'],
 'email' => $row['email'],
-'public_key' => $row['public_key']
+'public_key' => $row['public_key'],
+'idUser' => $row['idUser']
+
 
 )
 );

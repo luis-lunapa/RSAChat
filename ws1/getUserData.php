@@ -114,6 +114,8 @@ $json['msg']                    = 'Datos obtenidos correctamente';
 $json['data']['name']           = $login['name'];
 $json['data']['email']          = $login['email'];
 $json['data']['public_key']     = $login['public_key'];
+$json['data']['idUser']          = $login['idUser'];
+
 
 
 

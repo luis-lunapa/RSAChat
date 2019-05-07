@@ -78,7 +78,9 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         
         let user = AppManager.shared.persistencia.currentUser!
         
-       // print("Private key == \(user.privateKey!)")
+        
+        print("Public key == \(friend.public_key_base64)")
+        print("Private key == \(user.privateKey!)")
         
         let clear = NewRSA.decrypt(cipher: "crCqaTuyCs1SasmiL2mlVQhuhZZild5xbikcUzIhazqwH+a8cBr5qGVXTUwdgJkYA8qY+/EwEAdywqAAEsbxi/3c3UNmmBRSsrP7QhQ7ix9ECTPU3zoWcu/UmnL2WQsFjWYiDGF2oD5Pn/+QAWXqmOS7Tu785TlvY7F/VK7zQAONLyUTMcG3/LVXeBEN+t/g/dIPyQ08V8fB0fQXtwmhUcR97yg5Ngvk/MQn8gM50MHkG6pERB42CBqJgVPGn6exDi5MbowgATgIuE4QmDTBNDwVb/vxld5hfEG60TQ39lrfa3TpePt48D1RqzsXr9TxGzud2o3OiFfdHtRRe1aeYw==", private_key: user.privateKey)
         

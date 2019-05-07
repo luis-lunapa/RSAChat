@@ -203,9 +203,10 @@ final class Networking {
                         let name = f["name"].stringValue
                         let email = f["email"].stringValue
                         let public_key = f["public_key"].stringValue
+                        let idUser = f["idUser"].stringValue
                         
                         
-                        let friend = Friend.init(name: name, email: email, public_key: public_key)
+                        let friend = Friend.init(idUser: idUser, name: name, email: email, public_key: public_key)
                       
                         friends.append(friend)
                     }
