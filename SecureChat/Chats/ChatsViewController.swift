@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChatsViewController: UIViewController {
+class ChatsViewController: UIViewController, UITextViewDelegate {
     
    // var friendMsg = [Message]()
     var messages = [Message]()
@@ -22,8 +22,18 @@ class ChatsViewController: UIViewController {
     
     @IBOutlet weak var messageComposerView: UIView!
     
+    @IBOutlet weak var dumbTextViewMsg: UITextView!
+    @IBOutlet weak var realTextViewMsg: UITextView!
+    
+    @IBOutlet weak var sendButton: UIButton!
+    
+    var friend: Friend!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.dumbTextViewMsg.delegate = self
+        self.realTextViewMsg.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -32,12 +42,37 @@ class ChatsViewController: UIViewController {
         self.collectionView.dataSource  = self
         
         self.msgTextView.inputAccessoryView = self.messageComposerView
+        
+        self.dumbTextViewMsg.layer.cornerRadius = 12
+        self.realTextViewMsg.layer.cornerRadius = 12
 
         // Do any additional setup after loading the view.
     }
     
     @objc func hideKeyboard() {
         self.view.endEditing(true)
+    }
+    
+
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        self.realTextViewMsg.becomeFirstResponder()
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.dumbTextViewMsg.text = self.realTextViewMsg.text
+    }
+    
+    
+    @IBAction func sendMessagePressed(_ sender: Any) {
+        if self.realTextViewMsg.text == "" {
+            return
+        }
+        
+        
+       
+        
+        
     }
     
 

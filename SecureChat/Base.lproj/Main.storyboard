@@ -320,6 +320,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="sendMessagePressed:" destination="o0Y-60-g1y" eventType="touchUpInside" id="2ad-s4-0Qz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -350,32 +353,49 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="CHJ-LV-db5" id="o1U-Hb-U56"/>
-                        <outlet property="messageComposerView" destination="1N6-mn-9mo" id="men-i3-Exv"/>
+                        <outlet property="dumbTextViewMsg" destination="PNl-FM-WoO" id="JC6-hZ-Rb4"/>
+                        <outlet property="messageComposerView" destination="7LX-I1-8H5" id="yGw-3l-tin"/>
                         <outlet property="msgTextView" destination="PNl-FM-WoO" id="gjt-sc-jcJ"/>
-                        <outlet property="sendButton" destination="g19-fO-oZ2" id="e0r-Sh-ZfK"/>
+                        <outlet property="realTextViewMsg" destination="p1M-Ag-Xf8" id="iQF-HZ-1b8"/>
+                        <outlet property="sendButton" destination="g19-fO-oZ2" id="aG9-Fw-HPA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qw8-j2-frw" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="1N6-mn-9mo">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-I1-8H5">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="89"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Qx-Cr-kpc">
-                            <rect key="frame" x="318" y="17" width="72" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <state key="normal" title="Send"/>
-                        </button>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LB6-KV-pUf">
-                            <rect key="frame" x="16" y="8" width="294" height="56"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p1M-Ag-Xf8">
+                            <rect key="frame" x="22" y="8" width="288" height="56"/>
+                            <color key="backgroundColor" white="0.92822488579999995" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="BEh-Lb-6P5"/>
+                                <constraint firstAttribute="width" constant="288" id="zYe-Mn-ed6"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EeO-7m-Ehn">
+                            <rect key="frame" x="320" y="17" width="72" height="38"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="72" id="Uol-v5-wID"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <state key="normal" title="Send"/>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <viewLayoutGuide key="safeArea" id="ZdS-wS-Khz"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="p1M-Ag-Xf8" firstAttribute="top" secondItem="7LX-I1-8H5" secondAttribute="top" constant="8" id="6Qp-ee-mAD"/>
+                        <constraint firstItem="p1M-Ag-Xf8" firstAttribute="leading" secondItem="7LX-I1-8H5" secondAttribute="leading" constant="22" id="D2M-RQ-Wzs"/>
+                        <constraint firstAttribute="trailing" secondItem="EeO-7m-Ehn" secondAttribute="trailing" constant="22" id="DyS-76-tg4"/>
+                        <constraint firstItem="EeO-7m-Ehn" firstAttribute="top" secondItem="7LX-I1-8H5" secondAttribute="top" constant="17" id="KoK-AC-A9F"/>
+                        <constraint firstItem="EeO-7m-Ehn" firstAttribute="leading" secondItem="p1M-Ag-Xf8" secondAttribute="trailing" constant="10" id="RTK-FV-DnG"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="89" id="XH4-gn-RpF"/>
+                        <constraint firstAttribute="bottom" secondItem="p1M-Ag-Xf8" secondAttribute="bottom" constant="25" id="szO-Ja-4Fe"/>
+                        <constraint firstItem="EeO-7m-Ehn" firstAttribute="leading" secondItem="p1M-Ag-Xf8" secondAttribute="trailing" constant="10" id="vZP-FJ-AQf"/>
+                        <constraint firstAttribute="bottom" secondItem="EeO-7m-Ehn" secondAttribute="bottom" constant="34" id="w3W-r6-V5x"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="VFj-CK-t5E"/>
                 </view>
             </objects>
             <point key="canvasLocation" x="2259.4202898550725" y="1335.9375"/>
