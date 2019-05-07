@@ -18,10 +18,10 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var msgTextView: UITextView!
     
   
-    @IBOutlet weak var messageComposerView: UIView!
+   
     
     @IBOutlet weak var dumbTextViewMsg: UITextView!
-    @IBOutlet weak var realTextViewMsg: UITextView!
+   
     
     @IBOutlet weak var sendButton: UIButton!
     
