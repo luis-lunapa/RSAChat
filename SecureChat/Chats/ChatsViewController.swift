@@ -36,7 +36,7 @@ class ChatsViewController: UIViewController {
     }
     
     @objc func hideKeyboard() {
-        self.view.endEditing(trie)
+        self.view.endEditing(true)
     }
     
 
