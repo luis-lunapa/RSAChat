@@ -14,11 +14,15 @@ PODS:
   - Realm/Headers (3.14.1)
   - RealmSwift (3.14.1):
     - Realm (= 3.14.1)
+  - SwiftyRSA (1.5.0):
+    - SwiftyRSA/ObjC (= 1.5.0)
+  - SwiftyRSA/ObjC (1.5.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - PromiseKit (~> 6.0)
   - RealmSwift
+  - SwiftyRSA
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -26,13 +30,15 @@ SPEC REPOS:
     - PromiseKit
     - Realm
     - RealmSwift
+    - SwiftyRSA
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   PromiseKit: 51794a832647e7b819336dc2279039ce9f1cc49b
   Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
   RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
+  SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
 
-PODFILE CHECKSUM: 4c299435d37f699f3ba621c66d4ec6f0fedc958b
+PODFILE CHECKSUM: 74f992b57301e175f2ceeccfca85d20f5e06a257
 
 COCOAPODS: 1.6.0.beta.2

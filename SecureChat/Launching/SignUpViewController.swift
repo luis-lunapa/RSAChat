@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +27,9 @@ class SignUpViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
         
-       
         
-
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -42,10 +42,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-//        self.nameTextField.setBottomLine(borderColor: .gray)
-//        self.emailTextField.setBottomLine(borderColor: .gray)
-//        self.passwordTextField.setBottomLine(borderColor: .gray)
-//        self.passwordConfirmTextField.setBottomLine(borderColor: .gray)
+        //        self.nameTextField.setBottomLine(borderColor: .gray)
+        //        self.emailTextField.setBottomLine(borderColor: .gray)
+        //        self.passwordTextField.setBottomLine(borderColor: .gray)
+        //        self.passwordConfirmTextField.setBottomLine(borderColor: .gray)
     }
     
     
@@ -60,43 +60,34 @@ class SignUpViewController: UIViewController {
         let email    = self.emailTextField.text!
         let password = self.passwordTextField.text!
         
-        let (public_key, private_key) = RSA.generarLlaves()
+        let (public_key, private_key) = NewRSA.generateKeys()
         
         print("Llaves = privada = \(private_key) publica = \(public_key)")
+        RSA.savePrivateKey(key: private_key)
         
-   
-        AppManager.shared.networking.createAccount(name: name, email: email, password: password, public_key: public_key).done {
             
-            ready in
-//
-//            let alert = UIAlertController.init(title: "Welcome !!", message: "You can now login and start messaging 🥳", preferredStyle: .alert)
-//
-//            let ok = UIAlertAction.init(title: "OK", style: .default, handler: nil)
-//
-//            alert.addAction(ok)
-//
-//            self.dismiss(animated: true) {
-//                 self.present(alert, animated: true)
-//            }
-            
-//
-            let alert = Utilidades.showMessageCompletion(title: "Welcome !!", text: "You can now login and start messaging 🥳", block: {
-                 self.dismiss(animated: true)
-            })
-            
-            self.present(alert, animated: true)
-         
-
-        }.catch {
-            error in
-            let error = error as NSError
-            
-           
-            self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
-            
+            AppManager.shared.networking.createAccount(name: name, email: email, password: password, public_key: public_key).done {
+                
+                ready in
+                
+                let alert = Utilidades.showMessageCompletion(title: "Welcome !!", text: "You can now login and start messaging 🥳", block: {
+                    self.dismiss(animated: true)
+                })
+                
+                self.present(alert, animated: true)
                 
                 
-        }
+                }.catch {
+                    error in
+                    let error = error as NSError
+                    
+                    
+                    self.showAlert(title: "Oops", text: error.userInfo["msg"] as! String)
+                    
+                    
+                    
+            }
+        
         
         
     }
@@ -140,15 +131,15 @@ class SignUpViewController: UIViewController {
         }
         
         
-       return ready
+        return ready
         
     }
     
     
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -176,5 +167,5 @@ class SignUpViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-
+    
 }

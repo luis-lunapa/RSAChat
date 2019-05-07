@@ -42,7 +42,9 @@ class LoginViewController: UIViewController {
         
         AppManager.shared.networking.login(email: email, password: password).done {
             usuario in
+            usuario.privateKey = RSA.getPrivateKey()
             usuario.save()
+            
             AppManager.shared.persistencia.currentUser = usuario
             let vc = self.storyboard!.instantiateViewController(withIdentifier: "MainViewController")
             self.present(vc, animated: true)

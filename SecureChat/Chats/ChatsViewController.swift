@@ -20,7 +20,8 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
   
    
     
-    @IBOutlet weak var dumbTextViewMsg: UITextView!
+    @IBOutlet weak var messageTxtView: UITextView!
+   
    
     
     @IBOutlet weak var sendButton: UIButton!
@@ -32,12 +33,11 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoard), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        self.dumbTextViewMsg.delegate = self
-        self.realTextViewMsg.delegate = self
+        self.messageTxtView.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -47,8 +47,8 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         
         //self.msgTextView.inputAccessoryView = self.messageComposerView
         
-        self.dumbTextViewMsg.layer.cornerRadius = 12
-        self.realTextViewMsg.layer.cornerRadius = 12
+        self.messageTxtView.layer.cornerRadius = 12
+        
 
         // Do any additional setup after loading the view.
     }
@@ -59,12 +59,47 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
 
     
     @IBAction func sendMessagePressed(_ sender: Any) {
-        if self.realTextViewMsg.text == "" {
+        if self.messageTxtView.text == "" {
             return
         }
         
+        let e = 1858697
+        let n = 2830276003237
+        
         
        
+        let d = 829059397433
+        
+        let msg = self.messageTxtView.text!
+        
+        let cipher = NewRSA.encrypt(msg: msg, public_key: friend.public_key_base64)
+        
+       // print("Cipher = \(cipher)")
+        
+        let user = AppManager.shared.persistencia.currentUser!
+        
+       // print("Private key == \(user.privateKey!)")
+        
+        let clear = NewRSA.decrypt(cipher: "crCqaTuyCs1SasmiL2mlVQhuhZZild5xbikcUzIhazqwH+a8cBr5qGVXTUwdgJkYA8qY+/EwEAdywqAAEsbxi/3c3UNmmBRSsrP7QhQ7ix9ECTPU3zoWcu/UmnL2WQsFjWYiDGF2oD5Pn/+QAWXqmOS7Tu785TlvY7F/VK7zQAONLyUTMcG3/LVXeBEN+t/g/dIPyQ08V8fB0fQXtwmhUcR97yg5Ngvk/MQn8gM50MHkG6pERB42CBqJgVPGn6exDi5MbowgATgIuE4QmDTBNDwVb/vxld5hfEG60TQ39lrfa3TpePt48D1RqzsXr9TxGzud2o3OiFfdHtRRe1aeYw==", private_key: user.privateKey)
+        
+        print("Clear TEXT  = \(clear)")
+        
+//        let texto =  RSA.encriptar(mensaje: msg, e: e, n: n)
+//         print("cipher msg == \(texto)")
+        
+    //    let des = RSA.desEncriptar(base64Cipher: texto!, d: d, n: n)
+        
+        // Msg encriptado = MTg1ODc1MzE4NTg3OTAxODU4Nzg5MTg1ODc5MjE4NTg3MjkxODU4NzI4
+      
+      
+        
+       
+        
+        print("cipher text == \(cipher)")
+        
+        
+        
+    
         
         
     }

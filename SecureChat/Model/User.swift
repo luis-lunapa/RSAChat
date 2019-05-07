@@ -16,7 +16,7 @@ import RealmSwift
     dynamic var token: String = ""
     dynamic var email: String = ""
     dynamic var name: String = ""
-    dynamic var privateKey: String = ""
+    dynamic var privateKey: String? = ""
     @objc private dynamic var profilePicData: Data?
     
     convenience init (idUser: String, token: String, email: String, name: String, profilePic: String?) {

@@ -9,6 +9,7 @@ target 'SecureChat' do
   pod 'RealmSwift'
   pod 'PromiseKit', '~> 6.0'#, '~> 6.0'
   pod 'Alamofire', '~> 4.7'
+  pod 'SwiftyRSA'
 
 
 end

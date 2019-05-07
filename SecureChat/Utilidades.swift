@@ -251,6 +251,11 @@ final class Utilidades {
 }
 
 extension String {
+    
+    subscript (i: Int) -> Character {
+        return self[index(startIndex, offsetBy: i)]
+    }
+    
     var localized: String {
         return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }

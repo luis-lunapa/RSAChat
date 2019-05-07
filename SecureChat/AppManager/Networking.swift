@@ -206,6 +206,7 @@ final class Networking {
                         
                         
                         let friend = Friend.init(name: name, email: email, public_key: public_key)
+                      
                         friends.append(friend)
                     }
                     

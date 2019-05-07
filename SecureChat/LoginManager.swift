@@ -38,6 +38,7 @@ class LoginManager {
                 if let usuarioGuardado = listaLoca.first {
                     
                     user = User.init(idUser: usuarioGuardado.idUser, token: usuarioGuardado.token, email: usuarioGuardado.email, name: usuarioGuardado.name, profilePic: nil)
+                    user!.privateKey = RSA.getPrivateKey()
                     
                     
                 }

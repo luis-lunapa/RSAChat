@@ -30,7 +30,7 @@ final class RSA {
      - Copyright: Copyright © 2019 DeepTech.
      */
     
-    static func generateKeys(tag: String) -> (SecKey?, SecKey?) {
+    static func generateKeys() -> (SecKey?, SecKey?) {
         
         let keyTag = "com.deepTech.SecureChat".data(using: .utf8)!
         let attributes: [String: Any] =
@@ -108,7 +108,7 @@ final class RSA {
 
     }
     
-    private static func savePrivateKey(key: String) {
+    static func savePrivateKey(key: String) {
         
         let defaults = UserDefaults.standard
         
@@ -118,7 +118,7 @@ final class RSA {
         
     }
     
-    private static func savePublicKey(key: String) {
+    static func savePublicKey(key: String) {
         
         let defaults = UserDefaults.standard
         
@@ -135,15 +135,111 @@ final class RSA {
     static func getPublicKey() -> String? {
         return UserDefaults.standard.string(forKey: "public_key")
     }
-    
-    
-    static func encriptar(mensaje: String, llavePublica: String) -> String? {
+
+    static func encriptar(mensaje: String, e: Int, n: Int) -> String? {
         
+        let  bytes: [UInt8] = Array(mensaje.utf8)
+        
+        print("Bytes before encrypting = \(bytes)")
+        
+        var encryptedBytes = [String]()
+        
+        for b in bytes {
+            let m = Int(b)
+            
+            let cipher = (m ^ e) % n
+            encryptedBytes.append(String(cipher))
+            
+        }
+        
+        print("Encrypted bytes == \(encryptedBytes)")
+        
+//        var strBytes = ""
+//
+//        for val in bytes {
+//            strBytes = strBytes + "\(val)"
+//        }
+//
+//        let msgInt = Int(strBytes)
+//
+//        let encrypted = msgInt! ^ e % n
+//
+        
+     //   String(encrypted)
+        
+        
+        return encryptedBytes.joined().data(using: .utf8)!.base64EncodedString()
+    }
+    
+    static func desEncriptar(base64Cipher: String, d: Int, n: Int) -> String? {
+        
+        let decodedData = Data(base64Encoded: base64Cipher)
+        let decodedString = String(data: decodedData!, encoding: .utf8)
+        print("Decoded String = \(decodedString) y  count = \(decodedString?.count)")
+        
+        
+        var i = 0
+        var decodedStringArray = [String]()
+        var str = ""
+        
+        decodedString!.forEach {
+            char in
+            
+            if i % 7 == 0 && i != 0 {
+                
+               
+                decodedStringArray.append(str)
+                str = String(char)
+
+            } else if i == decodedString!.count - 1 {
+                str.append(char)
+                 decodedStringArray.append(str)
+                
+            }else {
+                 str.append(char)
+            }
+
+            i += 1
+        }
+
+      
+        
+       
+        // Convertir a UInt8
+        
+        var plainText: [String] = [String]()
+        
+        for v in decodedStringArray { //Desencriptar
+            
+            let c = Int(v)
+            
+            let plain = (c! ^ d) % n
+            
+            plainText.append(String(plain))
+            
+          
+        }
+        
+        print("plainText = \(plainText)")
+        
+      
+//       let plainTextStr = String(bytes: plainText, encoding: .utf8)
+//
+//        print("Desencripted bytes = \(plainText)")
+        
+       
+        return nil
+    }
+    
+    
+    
+    static func encriptarRSA(mensaje: String, llavePublica: String) -> String? {
+
         guard let data = Data(base64Encoded: llavePublica) else {
             print("Error al convertir llave a base64")
             return nil
         }
-        
+
         var atributos: CFDictionary {
             return
                 [
@@ -152,32 +248,32 @@ final class RSA {
                     kSecAttrKeySizeInBits   : 2048,
                     kSecReturnPersistentRef : kCFBooleanTrue
             ] as CFDictionary
-            
-            
+
+
         }
-        
+
         var error: Unmanaged<CFError>? = nil
         guard let secKey = SecKeyCreateWithData(data as CFData, atributos, &error) else {
             print("Error al encriptar = \(error.debugDescription)")
             return nil
         }
-        
+
         return encrypt(string: mensaje, pubKey: secKey)
     }
-    
-    static private func encrypt(string: String, pubKey: SecKey) -> String? {
-        
+
+    static func encrypt(string: String, pubKey: SecKey) -> String? {
+
         let buffer = [UInt8](string.utf8)
-        
+
         var keySize = SecKeyGetBlockSize( pubKey)
         var keyBuffer = [UInt8] (repeating: 0, count: keySize)
-        
+
         // Se genera el texto encriptado
-        
+
         guard SecKeyEncrypt(pubKey, SecPadding.PKCS1, buffer, buffer.count, &keyBuffer, &keySize) == errSecSuccess else {return nil}
-        
+
         return Data(bytes: keyBuffer, count: keySize).base64EncodedString()
-        
+
     }
     
     static private func selectE(p: Int, q: Int) -> Int{

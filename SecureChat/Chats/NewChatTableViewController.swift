@@ -96,10 +96,19 @@ class NewChatTableViewController: UITableViewController {
         if isSearching {
             let selectedFriend = self.lookingFriends[indexPath.row]
             
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "chatView") as! ChatsViewController
+            vc.friend = selectedFriend
+            vc.title = selectedFriend.name
+            self.show(vc, sender: self)
+            
             /// Mostrar pantalla de chat
             
         } else {
              let selectedFriend = self.allFriends[indexPath.row]
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "chatView") as! ChatsViewController
+            vc.friend = selectedFriend
+            vc.title = selectedFriend.name
+            self.show(vc, sender: self)
         }
         
         
@@ -107,6 +116,11 @@ class NewChatTableViewController: UITableViewController {
         
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 106
+    }
+    
     
     func showAlert(title: String, text: String) {
         

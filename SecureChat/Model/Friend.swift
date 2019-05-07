@@ -7,15 +7,19 @@
 //
 
 import Foundation
+import Security
 
 class Friend {
     
     let name: String
     let email: String
     let public_key_base64: String
-    let public_key: String
-    let e: Int
-    let n: Int
+    
+//    let public_key: String?
+//    let e: Int?
+//    let n: Int?
+//
+    var publicK: SecKey?
     
     
     init(name: String, email: String, public_key: String) {
@@ -23,16 +27,29 @@ class Friend {
         self.name       = name
         self.email      = email
         self.public_key_base64 = public_key
-        self.public_key = String.init(data: Data.init(base64Encoded: public_key)!, encoding: .utf8)!
-        
-        let publicArray = self.public_key.components(separatedBy: "%mod%")
-        
-        self.e = Int(publicArray[0])!
-        self.n = Int(publicArray[1])!
-        
+
         
         
     }
     
     
+    
+    
+    
+    func getSecPublicKey () {
+        if let data2 = Data.init(base64Encoded: public_key_base64){
+            let keyDict:[NSObject:NSObject] = [
+                kSecAttrKeyType: kSecAttrKeyTypeRSA,
+                kSecAttrKeyClass: kSecAttrKeyClassPublic,
+                kSecAttrKeySizeInBits: NSNumber(value: 512),
+                kSecReturnPersistentRef: true as NSObject
+            ]
+ 
+            
+            self.publicK = SecKeyCreateWithData(data2 as CFData, keyDict as CFDictionary, nil)
+            print("P KEY ++ \(publicK)")
+        }
+        
+        
+    }
 }
