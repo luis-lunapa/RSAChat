@@ -17,9 +17,7 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var msgTextView: UITextView!
     
-    @IBOutlet weak var sendButton: UIButton!
-    
-    
+  
     @IBOutlet weak var messageComposerView: UIView!
     
     @IBOutlet weak var dumbTextViewMsg: UITextView!
@@ -27,10 +25,16 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var sendButton: UIButton!
     
+    @IBOutlet weak var bottomNewMessage: NSLayoutConstraint!
+    
+    
     var friend: Friend!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleKeyBoard), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         self.dumbTextViewMsg.delegate = self
         self.realTextViewMsg.delegate = self
@@ -41,7 +45,7 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         self.collectionView.delegate    = self
         self.collectionView.dataSource  = self
         
-        self.msgTextView.inputAccessoryView = self.messageComposerView
+        //self.msgTextView.inputAccessoryView = self.messageComposerView
         
         self.dumbTextViewMsg.layer.cornerRadius = 12
         self.realTextViewMsg.layer.cornerRadius = 12
@@ -52,17 +56,7 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
     @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
-    
 
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.realTextViewMsg.becomeFirstResponder()
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        self.dumbTextViewMsg.text = self.realTextViewMsg.text
-    }
-    
     
     @IBAction func sendMessagePressed(_ sender: Any) {
         if self.realTextViewMsg.text == "" {
@@ -85,6 +79,39 @@ class ChatsViewController: UIViewController, UITextViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @objc func handleKeyBoard(notification: Notification) {
+        
+        if let userInfo = notification.userInfo {
+            if let keyBoardFrame: NSValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                //print("TAMANO KEYBOARD ++ \(keyBoardFrame.cgRectValue)")
+                let isKeyBoardShowing = notification.name == UIResponder.keyboardWillShowNotification
+                // print("IS KEYBOARD SHOWING == \(isKeyBoardShowing)")
+                
+                bottomNewMessage?.constant = isKeyBoardShowing ? keyBoardFrame.cgRectValue.height : 0
+                
+                UIView.animate(withDuration: 0, delay: 0, options: .curveEaseOut, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: {
+                    completed in
+                    if isKeyBoardShowing {
+                        if !self.messages.isEmpty {
+                            let indexPath = IndexPath(item: self.messages.count - 1, section: 0)
+                           
+                             self.collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
+                        }
+                        
+                    }
+                    
+                    
+                })
+                
+                
+            }
+            
+            
+        }
+    }
 
 }
 

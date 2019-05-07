@@ -352,6 +352,7 @@
                         <viewLayoutGuide key="safeArea" id="aF0-pO-8ss"/>
                     </view>
                     <connections>
+                        <outlet property="bottomNewMessage" destination="TdY-u3-gtJ" id="c8y-mp-8Cy"/>
                         <outlet property="collectionView" destination="CHJ-LV-db5" id="o1U-Hb-U56"/>
                         <outlet property="dumbTextViewMsg" destination="PNl-FM-WoO" id="JC6-hZ-Rb4"/>
                         <outlet property="messageComposerView" destination="7LX-I1-8H5" id="yGw-3l-tin"/>
